@@ -2,7 +2,7 @@
 //  MITTBuilsdMesgController.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit
@@ -13,6 +13,23 @@ class MITTBuilsdMesgController: UIViewController {
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChmesg") )
 
+    private lazy var MITTBuilsdheart: UIButton = {
+        let chdert = UIButton.init()
+        chdert.setBackgroundImage(UIImage.init(named: "MITTBuilsdheardtbeat"), for: .normal)
+        chdert.addTarget(self, action: #selector(MITTBuilsdbeginmat), for: .touchUpInside)
+        chdert.translatesAutoresizingMaskIntoConstraints = false
+        return chdert
+    }()
+    
+    private lazy var MITTBuilsdMesgholderimg: UIImageView = {
+        let quickImg = UIImageView.init(image: UIImage.init(named: "updatenodata"))
+        quickImg.contentMode = .scaleAspectFit
+        quickImg.translatesAutoresizingMaskIntoConstraints = false
+        return quickImg
+    }()
+   @objc func MITTBuilsdbeginmat()  {
+        
+    }
     private let MITTBuilsdAvatarThumbnail = UIImageView()
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
@@ -33,7 +50,6 @@ class MITTBuilsdMesgController: UIViewController {
     }
 
     private func MITTBuilsdInitializeAestheticBase() {
-        view.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
         MITTBuilsdBrandHeader.contentMode = .scaleToFill
         MITTBuilsdBrandHeader.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +62,9 @@ class MITTBuilsdMesgController: UIViewController {
         MITTBuilsdAvatarThumbnail.clipsToBounds = true
         MITTBuilsdAvatarThumbnail.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdAvatarThumbnail)
+        view.addSubview(MITTBuilsdheart)
+        view.addSubview(MITTBuilsdMesgholderimg)
+        MITTBuilsdMesgholderimg.isHidden = true
     }
 
     private func MITTBuilsdSetupCollectionSurface() {
@@ -54,11 +73,13 @@ class MITTBuilsdMesgController: UIViewController {
         buif.minimumLineSpacing = 10
         buif.minimumInteritemSpacing = 10
         MITTBuilsdMainScrollCanvas = UICollectionView(frame: .zero, collectionViewLayout: buif)
-        MITTBuilsdMainScrollCanvas.backgroundColor = .clear
+        MITTBuilsdMainScrollCanvas.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMinYCorner]
+        MITTBuilsdMainScrollCanvas.layer.cornerRadius = 15
+        MITTBuilsdMainScrollCanvas.backgroundColor = .white
         MITTBuilsdMainScrollCanvas.delegate = self
         MITTBuilsdMainScrollCanvas.dataSource = self
         
-        MITTBuilsdMainScrollCanvas.register(MITTBuilsdHeroEventCell.self, forCellWithReuseIdentifier: "Hero")
+        MITTBuilsdMainScrollCanvas.register(MITTBuilsdmesgcell.self, forCellWithReuseIdentifier: "MITTBuilsdmesgcell")
        
         
         MITTBuilsdMainScrollCanvas.translatesAutoresizingMaskIntoConstraints = false
@@ -75,12 +96,19 @@ class MITTBuilsdMesgController: UIViewController {
             MITTBuilsdAvatarThumbnail.widthAnchor.constraint(equalToConstant: 36),
             MITTBuilsdAvatarThumbnail.heightAnchor.constraint(equalToConstant: 36),
             
-         
-            
-            MITTBuilsdMainScrollCanvas.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant: 10),
+            MITTBuilsdheart.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant: 20),
+            MITTBuilsdheart.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
+            MITTBuilsdheart.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+            MITTBuilsdheart.heightAnchor.constraint(equalToConstant: 62),
+           
+           
+            MITTBuilsdMainScrollCanvas.topAnchor.constraint(equalTo: MITTBuilsdheart.bottomAnchor, constant:16),
             MITTBuilsdMainScrollCanvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             MITTBuilsdMainScrollCanvas.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            MITTBuilsdMainScrollCanvas.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            MITTBuilsdMainScrollCanvas.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            MITTBuilsdMesgholderimg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            MITTBuilsdMesgholderimg.topAnchor.constraint(equalTo: MITTBuilsdheart.bottomAnchor, constant: 100),
         ])
     }
 
@@ -90,7 +118,6 @@ class MITTBuilsdMesgController: UIViewController {
 
 // MARK: - Data Source Logic
 extension MITTBuilsdMesgController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int { return 3 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
@@ -98,7 +125,7 @@ extension MITTBuilsdMesgController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Tag", for: indexPath) as! MITTBuilsdInterestTagCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MITTBuilsdmesgcell", for: indexPath) as! MITTBuilsdmesgcell
        
         return cell
     }

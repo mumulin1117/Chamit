@@ -2,12 +2,16 @@
 //  MITTBuilsdDiscoveryFeedController.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit
 
 class MITTBuilsdDiscoveryFeedController: UIViewController {
+    
+    private var MITTBuilsdTopActivys:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
+    
+    
     private let MITTBuilsdHeroPageIndicator = UIPageControl()
     private let MITTBuilsdHeroTotalCount: Int = 3 // 对应 Section 0 的 item 数量
     
@@ -52,6 +56,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         
         MITTBuilsdConfigurePageMonitor()
         MITTBuilsdApplyIndicatorConstraints()
+        MITTBuilsdCommitAuthRequest()
     }
 
     private func MITTBuilsdInitializeAestheticBase() {
@@ -168,21 +173,23 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
     func numberOfSections(in collectionView: UICollectionView) -> Int { return 3 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 { return 3 }
+        if section == 0 { return MITTBuilsdTopActivys.count }
         if section == 1 { return MITTBuilsdInterestFilterStrip.count }
         return MITTBuilsdCurrentDisplayItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "Hero", for: indexPath)
+            let miitBuildCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Hero", for: indexPath) as! MITTBuilsdHeroEventCell
+            return   miitBuildCell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Tag", for: indexPath) as! MITTBuilsdInterestTagCell
             let MITTBuilsdIsActive = (indexPath.item == MITTBuilsdActiveCategoryIndex)
             cell.MITTBuilsdConfigureAesthetic(MITTBuilsdInterestFilterStrip[indexPath.item], active: MITTBuilsdIsActive)
             return cell
         } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "Showcase", for: indexPath)
+            let miitBuildCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Showcase", for: indexPath) as! MITTBuilsdToyShowcaseCell
+            return miitBuildCell
         }
     }
     
@@ -241,5 +248,31 @@ extension MITTBuilsdDiscoveryFeedController {
         if MITTBuilsdPageIndex >= 0 && MITTBuilsdPageIndex < MITTBuilsdHeroTotalCount {
             MITTBuilsdHeroPageIndicator.currentPage = MITTBuilsdPageIndex
         }
+    }
+    
+    private func MITTBuilsdCommitAuthRequest() {
+      
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
+        //active
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/iotpsecdgsvbyz/zrpucf", MITTBuilsdParams: ["MITTBuilsdWindUpToy":"87531697"]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
+                 
+                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                return
+            }
+            self.MITTBuilsdTopActivys = MITTBuilsdreasutl
+        
+            
+            
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
+        }
+
     }
 }

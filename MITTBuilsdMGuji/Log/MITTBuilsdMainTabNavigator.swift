@@ -2,7 +2,7 @@
 //  MITTBuilsdMainTabNavigator.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit
@@ -17,11 +17,18 @@ class MITTBuilsdMainTabNavigator: UITabBarController {
     }
     
     private func MITTBuilsdInitializeNavigationNodes() {
-        let MITTBuilsdHomePortal = MITTBuilsdDiscoveryFeedController()
-        let MITTBuilsdTrendRadar = MITTBuilsdSocialPulseController()
+        let MITTBuilsdHomePortal =  MITTBuilsdDiscoveryFeedController()
+       
+        
+        let MITTBuilsdTrendRadar =  MITTBuilsdSocialPulseController()
+       
+        
         let MITTBuilsdStudioSpace = UIViewController()
-        let MITTBuilsdInboxNexus = UIViewController()
-        let MITTBuilsdCollectorProfile = UIViewController()
+        
+        let MITTBuilsdInboxNexus =  MITTBuilsdMesgController()
+        
+        
+        let MITTBuilsdCollectorProfile = MITTBuilsdCollectorProfileontroller()
         
         viewControllers = [
             MITTBuilsdWrapInNav(MITTBuilsdHomePortal, "mITTBuilsdmhome", "mITTBuilsdhomesel"),
@@ -34,6 +41,8 @@ class MITTBuilsdMainTabNavigator: UITabBarController {
     
     private func MITTBuilsdWrapInNav(_ root: UIViewController, _ symbol: String, _ symbolsel: String) -> UINavigationController {
         let MITTBuilsdNav = UINavigationController(rootViewController: root)
+        MITTBuilsdNav.navigationBar.isHidden = true
+       
         MITTBuilsdNav.tabBarItem.image = UIImage(named: symbol)?.withRenderingMode(.alwaysOriginal)
         MITTBuilsdNav.tabBarItem.selectedImage = UIImage(named: symbolsel)?.withRenderingMode(.alwaysOriginal)
         root.view.backgroundColor = UIColor(white: 0.98, alpha: 1.0)

@@ -2,7 +2,7 @@
 //  MITTBuilsdSocialPulseController.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit

@@ -147,6 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MITTBuilsdMGuji/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Chamit needs camera access so you can capture the intricate details of your latest sculpts, share real-time reactions to new drops, and show your shelf to fellow collectors during quick visual syncs.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To provide a complete experience when showcasing your collection, Chamit requests microphone access for audio clarity during real-time detail sharing and to capture the authentic atmosphere of your creative space.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Chamit requires access to your photos to let you curate your digital shelf, upload high-quality shots of your rare finds, and share your creative expressions with the growing toy community.";
@@ -182,6 +183,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MITTBuilsdMGuji/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Chamit needs camera access so you can capture the intricate details of your latest sculpts, share real-time reactions to new drops, and show your shelf to fellow collectors during quick visual syncs.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To provide a complete experience when showcasing your collection, Chamit requests microphone access for audio clarity during real-time detail sharing and to capture the authentic atmosphere of your creative space.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Chamit requires access to your photos to let you curate your digital shelf, upload high-quality shots of your rare finds, and share your creative expressions with the growing toy community.";

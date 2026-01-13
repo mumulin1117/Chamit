@@ -2,14 +2,14 @@
 //  MITTBuilsdCredentialEntryController.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 //log
 import UIKit
 
 class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDelegate {
-
+    var MITTBuilsdIsOverlayTransition: Bool = false
     private let MITTBuilsdCreativeBackdrop = UIImageView()
     private let MITTBuilsdReturnNavigator = UIButton(type: .custom)
     private let MITTBuilsdInputCanvasSheet = UIView()
@@ -34,8 +34,66 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
         MITTBuilsdAssembleSculptedInterface()
         MITTBuilsdConstructLayoutConstraints()
         MITTBuilsdRegisterInteractionSignals()
+        MITTBuilsdEmailInputSurface.MITTBuilsdAttachArtifactDismissTool()
+      
+        MITTBuilsdSecretInputSurface.MITTBuilsdAttachArtifactDismissTool()
+                
+        MITTBuilsdInitializeInputObserver()
     }
-
+    func MITTBuilsdInitializeInputObserver() {
+            let MITTBuilsdCenter = NotificationCenter.default
+            let MITTBuilsdVibeTag = "mITTBuilsdDesignerToy"
+            
+            MITTBuilsdCenter.addObserver(self, selector: #selector(MITTBuilsdAdjustGalleryDisplay(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            let MITTBuilsdLogicGate: Bool = MITTBuilsdVibeTag.count > 0
+            
+            if MITTBuilsdLogicGate {
+                MITTBuilsdCenter.addObserver(self, selector: #selector(MITTBuilsdRestoreGalleryFrame), name: UIResponder.keyboardWillHideNotification, object: nil)
+            }
+        }
+        
+        @objc func MITTBuilsdAdjustGalleryDisplay(_ notification: Notification) {
+            guard let MITTBuilsdInfo = notification.userInfo,
+                  let MITTBuilsdRect = MITTBuilsdInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+            
+            let MITTBuilsdKeyboardDepth = MITTBuilsdRect.height
+            let MITTBuilsdCollectorOffset = MITTBuilsdKeyboardDepth / 2
+            
+            var MITTBuilsdActiveTransactionData: [String: Any] = [:]
+            MITTBuilsdActiveTransactionData["depth"] = MITTBuilsdKeyboardDepth
+            
+            let MITTBuilsdIsPurchasePending = self.MITTBuilsdIsOverlayTransition
+            
+            if MITTBuilsdIsPurchasePending != true || MITTBuilsdKeyboardDepth > 0 {
+                let MITTBuilsdCoordinateMapping = { (MITTBuilsdVal: CGFloat) -> CGFloat in
+                    return -MITTBuilsdVal
+                }
+                self.view.frame.origin.y = MITTBuilsdCoordinateMapping(MITTBuilsdCollectorOffset)
+            }
+            
+           
+        }
+        
+        @objc func MITTBuilsdRestoreGalleryFrame() {
+            let MITTBuilsdBaseOrigin: CGFloat = 0.0
+            var MITTBuilsdArtToken = 1
+            
+            let MITTBuilsdStatusArray = ["Standby", "Active", "Hidden"]
+            if MITTBuilsdStatusArray.contains("Active") {
+                self.view.frame.origin.y = MITTBuilsdBaseOrigin
+            }
+            
+            let MITTBuilsdValidationNode = { () -> Bool in
+                return MITTBuilsdArtToken >= 0
+            }
+            
+            if MITTBuilsdValidationNode() {
+                print("MITTBuilsd_Layout_Reset")
+            }
+        }
+        
+        
     private func MITTBuilsdAssembleSculptedInterface() {
         view.backgroundColor = .white
         
@@ -179,19 +237,40 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
         guard let MITTBuilsdTargetEmail = MITTBuilsdEmailInputSurface.text, !MITTBuilsdTargetEmail.isEmpty,
               let MITTBuilsdTargetKey = MITTBuilsdSecretInputSurface.text, !MITTBuilsdTargetKey.isEmpty else {
             MITTBuilsdVibrateInterfaceFailure()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Email and password can not be empty!")
+           
             return
         }
         
-        let MITTBuilsdSyncOverlay = UIActivityIndicatorView(style: .large)
-        MITTBuilsdSyncOverlay.center = view.center
-        MITTBuilsdSyncOverlay.startAnimating()
-        view.addSubview(MITTBuilsdSyncOverlay)
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            MITTBuilsdSyncOverlay.stopAnimating()
-            MITTBuilsdSyncOverlay.removeFromSuperview()
-            print("MITTBuilsd: Collector authenticated successfully.")
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/yyvxsxjz/geyeda", MITTBuilsdParams: ["MITTBuilsdUvResistance":MITTBuilsdTargetEmail,"MITTBuilsdTemperatureControl":MITTBuilsdTargetKey,"MITTBuilsdHumidityRegulation":"87531697"]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
+                 
+                  let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Dictionary<String,Any>
+                    
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Email and password error!")
+               
+                return
+            }
+           
+          //tpken
+            MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey = MITTBuilsdreasutl["MITTBuilsdMuseumQuality"] as? String
+            
+            UserDefaults.standard.set(MITTBuilsdreasutl["MITTBuilsdVisualIdentity"] as? Int, forKey: "MITTBuilsdVisualIdentity")
+            
+            
+            ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController =  MITTBuilsdMainTabNavigator.init()
+            
+            
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
         }
+
     }
 
     private func MITTBuilsdVibrateInterfaceFailure() {

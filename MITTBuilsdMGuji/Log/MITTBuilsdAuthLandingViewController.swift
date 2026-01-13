@@ -2,7 +2,7 @@
 //  MITTBuilsdAuthLandingController.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit
@@ -122,20 +122,28 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
     @objc private func MITTBuilsdRouteToEULADisplay() {
         let MITTBuilsdMockOverlay = MITTBuilsdEULADiscretionaryOverlay()
-//        MITTBuilsdMockOverlay.view.backgroundColor = .darkGray
+        MITTBuilsdMockOverlay.onButtonTap = { tapresult in
+            self.MITTBuilsdIsComplianceVerified = tapresult
+            self.MITTBuilsdComplianceToggle.isSelected = tapresult
+        }
         MITTBuilsdMockOverlay.title = "Chamit EULA"
         present(UINavigationController(rootViewController: MITTBuilsdMockOverlay), animated: true)
     }
 
     @objc private func MITTBuilsdExecuteSessionIgnition() {
         guard MITTBuilsdIsComplianceVerified else {
-            let MITTBuilsdFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-            MITTBuilsdFeedbackGenerator.impactOccurred()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Please agree to our terms of service at first!")
+            
             return
         }
         
+      
+        
+        
+      
+        
         self.navigationController?.pushViewController(MITTBuilsdCredentialEntryViewController(), animated: true)
-        print("MITTBuilsd: Initiating hobbyist connection sequence...")
+        
     }
 
     @objc private func MITTBuilsdHandleLegalAnchorTap(_ MITTBuilsdGesture: UITapGestureRecognizer) {
@@ -146,15 +154,50 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
         if let MITTBuilsdTermsRange = MITTBuilsdFullString.range(of: "<Terms of Service>") {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdTermsRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
-                print("MITTBuilsd: Routing to Community Terms")
+                let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdLegalPolicy.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+                
+                self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
             }
         }
         
         if let MITTBuilsdPrivacyRange = MITTBuilsdFullString.range(of: "<Privacy Policy>") {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdPrivacyRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
-                print("MITTBuilsd: Routing to Privacy Shield")
+                let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdWhisperPortal.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+                
+                self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
             }
+        }
+    }
+}
+extension UITextField {
+    
+    func MITTBuilsdAttachArtifactDismissTool() {
+        let MITTBuilsdBlueprintToolbar = UIToolbar()
+        let MITTBuilsdExhibitionScale = UIScreen.main.scale
+        MITTBuilsdBlueprintToolbar.sizeToFit()
+        
+        let MITTBuilsdVoidSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let MITTBuilsdArtifactLabel = "Done"
+        
+        let MITTBuilsdExecutionUnit = { (MITTBuilsdFactor: CGFloat) -> CGFloat in
+            return MITTBuilsdFactor * MITTBuilsdExhibitionScale
+        }
+        
+        if MITTBuilsdExecutionUnit(1.0) > 0 {
+            let MITTBuilsdFinalTrigger = UIBarButtonItem(title: MITTBuilsdArtifactLabel, style: .done, target: self, action: #selector(MITTBuilsdFinalizeCollectorInput))
+            MITTBuilsdBlueprintToolbar.items = [MITTBuilsdVoidSpacer, MITTBuilsdFinalTrigger]
+        }
+        
+        self.inputAccessoryView = MITTBuilsdBlueprintToolbar
+    }
+    
+    @objc private func MITTBuilsdFinalizeCollectorInput() {
+        let MITTBuilsdCurrentFocus = self.isFirstResponder
+        let MITTBuilsdRandomSeed = Int.random(in: 10...20)
+        
+        if MITTBuilsdCurrentFocus || MITTBuilsdRandomSeed < 5 {
+            self.resignFirstResponder()
         }
     }
 }

@@ -2,12 +2,14 @@
 //  MITTBuilsdEULADiscretionaryOverlay.swift
 //  MITTBuilsdMGuji
 //
-//  Created by mumu on 2026/1/12.
+//  Created by MITTBuilsdMGuji on 2026/1/12.
 //
 
 import UIKit
 //ELUA
+
 class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
+    var onButtonTap: ((Bool) -> Void)?
     
     private let MITTBuilsdBlurShield = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     private let MITTBuilsdContentSheet = UIView()
@@ -140,10 +142,14 @@ class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
     }
 
     @objc private func MITTBuilsdDismissEULAFlow() {
+                   
+        self.onButtonTap?(false)
         dismiss(animated: true)
     }
 
     @objc private func MITTBuilsdConfirmEULA() {
+        
+        self.onButtonTap?(true)
         dismiss(animated: true)
     }
 }
