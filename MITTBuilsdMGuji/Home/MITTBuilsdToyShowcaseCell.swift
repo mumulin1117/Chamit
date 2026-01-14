@@ -8,8 +8,8 @@
 import UIKit
 
 class MITTBuilsdToyShowcaseCell: UICollectionViewCell {
-    private let MITTBuilsdPreviewSurface = UIImageView()
-    private let MITTBuilsdFavoriteNode = UIImageView()
+     let MITTBuilsdPreviewSurface = UIImageView()
+     let MITTBuilsdFavoriteNode = UIImageView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .white

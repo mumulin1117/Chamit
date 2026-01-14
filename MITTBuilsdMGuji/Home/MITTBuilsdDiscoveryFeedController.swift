@@ -11,9 +11,22 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
     
     private var MITTBuilsdTopActivys:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
     
+    private var MITTBuilsdAlltopic:Array<Dictionary<String,Any>> = [
+        ["labelName":"All","MITTBuilsdBallJointedDoll":"All标签"],
+        ["labelName":"Blindbox","MITTBuilsdBallJointedDoll":"A标签"],
+        ["labelName":"Vinyl","MITTBuilsdBallJointedDoll":"B标签"],
+        ["labelName":"Streettoy","MITTBuilsdBallJointedDoll":"C标签"],
+        ["labelName":"Designer","MITTBuilsdBallJointedDoll":"D标签"],
+        ["labelName":"Drops","MITTBuilsdBallJointedDoll":"E标签"],
+        ["labelName":"Toyshot","MITTBuilsdBallJointedDoll":"F标签"],
+    ]
+    // 2. 数据源持有
+        private var MITTBuilsdMasterDataSource: [String: [[String: Any]]] = [:] // 分类后的字典
+        private var MITTBuilsdCurrentDisplayList: [[String: Any]] = []        // 当前显示列表
+    
     
     private let MITTBuilsdHeroPageIndicator = UIPageControl()
-    private let MITTBuilsdHeroTotalCount: Int = 3 // 对应 Section 0 的 item 数量
+    private var MITTBuilsdHeroTotalCount: Int = 3 // 对应 Section 0 的 item 数量
     
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChamit") )
@@ -21,7 +34,6 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
     private let MITTBuilsdAvatarThumbnail = UIImageView()
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
-    private let MITTBuilsdInterestFilterStrip = ["All", "ToyLink", "FigiBuddy", "ToyVibe"]
    
     private var MITTBuilsdActiveCategoryIndex: Int = 0
     
@@ -35,7 +47,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         MITTBuilsdHeroPageIndicator.isUserInteractionEnabled = false // 仅用于展示，由滚动触发
         MITTBuilsdHeroPageIndicator.transform = CGAffineTransform(scaleX: 0.8, y: 0.8) // 缩小尺寸更显精致
         MITTBuilsdHeroPageIndicator.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(MITTBuilsdHeroPageIndicator)
+        MITTBuilsdMainScrollCanvas.addSubview(MITTBuilsdHeroPageIndicator)
     }
     
     private func MITTBuilsdApplyIndicatorConstraints() {
@@ -57,6 +69,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         MITTBuilsdConfigurePageMonitor()
         MITTBuilsdApplyIndicatorConstraints()
         MITTBuilsdCommitAuthRequest()
+        MITTBuilsdCommitUserIndex()
     }
 
     private func MITTBuilsdInitializeAestheticBase() {
@@ -174,21 +187,35 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 { return MITTBuilsdTopActivys.count }
-        if section == 1 { return MITTBuilsdInterestFilterStrip.count }
-        return MITTBuilsdCurrentDisplayItems
+        if section == 1 { return MITTBuilsdAlltopic.count }
+        return MITTBuilsdCurrentDisplayList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let miitBuildCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Hero", for: indexPath) as! MITTBuilsdHeroEventCell
+            let acc = MITTBuilsdTopActivys[indexPath.row]
+            
+            miitBuildCell.MITTBuilsdBackdropCanvas.MITTBuilsdApplyCollectorGraphic(from: acc["MITTBuilsdWaterSlideTransfer"] as? String)
+            miitBuildCell.MITTBuilsdTopicHeadline.text = acc["MITTBuilsdSocketLink"] as? String
+            miitBuildCell.MITTBuilsdGeoLabel.text = acc["MITTBuilsdDetachableComponent"] as? String
+            miitBuildCell.MITTBuilsdChronosLabel.text = acc["MITTBuilsdTelescopicPart"] as? String
+            
+            miitBuildCell.actiImg.MITTBuilsdApplyCollectorGraphic(from: acc["MITTBuilsdEmbossedLogo"] as? String)
             return   miitBuildCell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Tag", for: indexPath) as! MITTBuilsdInterestTagCell
             let MITTBuilsdIsActive = (indexPath.item == MITTBuilsdActiveCategoryIndex)
-            cell.MITTBuilsdConfigureAesthetic(MITTBuilsdInterestFilterStrip[indexPath.item], active: MITTBuilsdIsActive)
+            cell.MITTBuilsdConfigureAesthetic(MITTBuilsdAlltopic[indexPath.row]["labelName"] as? String ?? "", active: MITTBuilsdIsActive)
             return cell
         } else {
             let miitBuildCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Showcase", for: indexPath) as! MITTBuilsdToyShowcaseCell
+            let acc = MITTBuilsdCurrentDisplayList[indexPath.row]
+            
+            miitBuildCell.MITTBuilsdPreviewSurface.MITTBuilsdApplyCollectorGraphic(from: acc["MITTBuilsdFashionDoll"] as? String)
+            miitBuildCell.MITTBuilsdFavoriteNode.tintColor = (acc["MITTBuilsdBodyBlushing"] as? Int == 1) ? .orange : UIColor.lightGray
+            
+            
             return miitBuildCell
         }
     }
@@ -212,8 +239,8 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
             
             // 5. 确保选中的标签滚动到视觉中心
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            
-            print("MITTBuilsd: Switched category to \(MITTBuilsdInterestFilterStrip[indexPath.item])")
+            MITTBuilsdDidSelectTopic(at: indexPath.row)
+//            print("MITTBuilsd: Switched category to \(MITTBuilsdInterestFilterStrip[indexPath.item])")
         } else if indexPath.section == 2 {
             // 模拟点击进入潮玩详情页
             MITTBuilsdNavigateToDetail(at: indexPath.item)
@@ -265,14 +292,80 @@ extension MITTBuilsdDiscoveryFeedController {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
                 return
             }
+            self.MITTBuilsdHeroTotalCount = MITTBuilsdreasutl.count
             self.MITTBuilsdTopActivys = MITTBuilsdreasutl
         
-            
+            self.MITTBuilsdMainScrollCanvas.reloadSections(IndexSet(integer: 0))
             
         } MITTBuilsdFailureBlock: {  ertttt in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
         }
 
+    }
+    
+    private func MITTBuilsdCommitUserIndex() {
+      
+      
+        ////sj/label/selectLabelPage
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/zorwzeumzteuewgz/wyaaqm", MITTBuilsdParams: ["MITTBuilsdSewingDetail":"87531697"]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+//            self.MITTBuilsdOrganizeData(from andu: [String: Any]?)
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any>
+//                 
+//                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                return
+            }
+            self.MITTBuilsdOrganizeData(from: MITTBuilsddata)
+//            print(MITTBuilsdreasutl)
+//            
+//        
+//            self.MITTBuilsdMainScrollCanvas.reloadSections(IndexSet(integer: 1))
+            
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+        }
+
+    }
+    
+    private func MITTBuilsdOrganizeData(from andu: [String: Any]?) {
+        guard let MITTBuilsdResponse = andu,
+              let MITTBuilsdRawList = MITTBuilsdResponse["data"] as? [[String: Any]] else { return }
+        
+        // 清空旧数据
+        var MITTBuilsdTempMap: [String: [[String: Any]]] = [:]
+        
+        // 遍历原始数据进行归类
+        for MITTBuilsdItem in MITTBuilsdRawList {
+            if let MITTBuilsdCategoryKey = MITTBuilsdItem["MITTBuilsdBallJointedDoll"] as? String {
+                if MITTBuilsdTempMap[MITTBuilsdCategoryKey] == nil {
+                    MITTBuilsdTempMap[MITTBuilsdCategoryKey] = []
+                }
+                MITTBuilsdTempMap[MITTBuilsdCategoryKey]?.append(MITTBuilsdItem)
+            }
+        }
+        
+        self.MITTBuilsdMasterDataSource = MITTBuilsdTempMap
+        self.MITTBuilsdMasterDataSource["All标签"] = MITTBuilsdRawList
+        // 默认显示第一个标签的内容
+        if let MITTBuilsdFirstCategory = MITTBuilsdAlltopic.first?["MITTBuilsdBallJointedDoll"] as? String {
+            MITTBuilsdSwitchCategory(to: MITTBuilsdFirstCategory)
+        }
+        
+    }
+    func MITTBuilsdDidSelectTopic(at index: Int) {
+        guard let MITTBuilsdCategoryKey = MITTBuilsdAlltopic[index]["MITTBuilsdBallJointedDoll"] as? String else { return }
+        MITTBuilsdSwitchCategory(to: MITTBuilsdCategoryKey)
+        
+    }
+    private func MITTBuilsdSwitchCategory(to MITTBuilsdKey: String) {
+        // 更新当前显示列表（如果该分类没数据，则显示空数组）
+        self.MITTBuilsdCurrentDisplayList = self.MITTBuilsdMasterDataSource[MITTBuilsdKey] ?? []
+        
+        self.MITTBuilsdMainScrollCanvas.reloadSections(IndexSet.init(integer: 2))
+     
+        
     }
 }

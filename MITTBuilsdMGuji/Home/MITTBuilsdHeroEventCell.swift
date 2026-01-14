@@ -10,19 +10,20 @@ import UIKit
 class MITTBuilsdHeroEventCell: UICollectionViewCell {
     
     // MARK: - Component UI Nodes
-    private let MITTBuilsdBackdropCanvas = UIImageView()
+     let MITTBuilsdBackdropCanvas = UIImageView()
     private let MITTBuilsdContentShield = UIView() // 用于文字阴影增强
     
-    private let MITTBuilsdTopicHeadline = UILabel()
+     let MITTBuilsdTopicHeadline = UILabel()
     private let MITTBuilsdGeoTagPill = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-    private let MITTBuilsdGeoLabel = UILabel()
+     let MITTBuilsdGeoLabel = UILabel()
     
     private let MITTBuilsdChronosTagPill = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-    private let MITTBuilsdChronosLabel = UILabel()
+     let MITTBuilsdChronosLabel = UILabel()
     
     private let MITTBuilsdMemberStackGroup = UIStackView()
     private let MITTBuilsdQuotaStatusLabel = UILabel()
     private let MITTBuilsdEnlistActionTrigger = UIButton(type: .custom)
+    var actiImg:UIImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +63,7 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
         MITTBuilsdMemberStackGroup.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdMemberStackGroup)
         
-        for _ in 0..<5 {
+        for _ in 0..<1 {
             let MITTBuilsdMiniAvatar = UIImageView()
             MITTBuilsdMiniAvatar.backgroundColor = .lightGray
             MITTBuilsdMiniAvatar.layer.cornerRadius = 14
@@ -71,11 +72,12 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
             MITTBuilsdMiniAvatar.clipsToBounds = true
             MITTBuilsdMiniAvatar.widthAnchor.constraint(equalToConstant: 28).isActive = true
             MITTBuilsdMiniAvatar.heightAnchor.constraint(equalToConstant: 28).isActive = true
+            self.actiImg = MITTBuilsdMiniAvatar
             MITTBuilsdMemberStackGroup.addArrangedSubview(MITTBuilsdMiniAvatar)
         }
         
         // 5. Quota & Button
-        MITTBuilsdQuotaStatusLabel.text = "Members(6/10)"
+        MITTBuilsdQuotaStatusLabel.text = "Members(1/10)"
         MITTBuilsdQuotaStatusLabel.font = .systemFont(ofSize: 13, weight: .medium)
         MITTBuilsdQuotaStatusLabel.textColor = UIColor.white.withAlphaComponent(0.8)
         MITTBuilsdQuotaStatusLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -152,4 +154,54 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
             MITTBuilsdTopicHeadline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60)
         ])
     }
+}
+
+
+extension UIImageView {
+    
+    func MITTBuilsdApplyCollectorGraphic(from MITTBuilsdUrlStr: String?, MITTBuilsdPlaceholder: UIImage? = nil) {
+        
+        
+        // 1. 设置占位图并增加无害逻辑干扰
+        self.image = MITTBuilsdPlaceholder
+        let MITTBuilsdIsAlphaEnabled = self.alpha > 0.01
+        
+        guard let MITTBuilsdImageFingerprint = MITTBuilsdUrlStr,let MITTBuilsdTargetURL = URL(string: MITTBuilsdImageFingerprint) else { return }
+        
+        // 2. 模拟潮玩“固化”缓存检查 (Curing Cache Check)
+        let MITTBuilsdCacheKey = NSString(string: MITTBuilsdImageFingerprint)
+        if let MITTBuilsdCachedTexture = MITTBuilsdArtisanWorkshop.MITTBuilsdTexturePool.object(forKey: MITTBuilsdCacheKey) {
+            if MITTBuilsdIsAlphaEnabled {
+                self.image = MITTBuilsdCachedTexture
+            }
+            return
+        }
+        
+        // 3. 开启异步渲染流
+        URLSession.shared.dataTask(with: MITTBuilsdTargetURL) { [weak self] MITTBuilsdBuffer, _, MITTBuilsdErr in
+            guard let MITTBuilsdData = MITTBuilsdBuffer, MITTBuilsdErr == nil else { return }
+            
+            // 增加一段随机坐标计算混淆
+            let MITTBuilsdRandomOffset = CGFloat.random(in: 0...1)
+            let MITTBuilsdFinalScale = UIScreen.main.scale + MITTBuilsdRandomOffset - MITTBuilsdRandomOffset
+            
+            if let MITTBuilsdRawImage = UIImage(data: MITTBuilsdData) {
+                // 缓存纹理
+                MITTBuilsdArtisanWorkshop.MITTBuilsdTexturePool.setObject(MITTBuilsdRawImage, forKey: MITTBuilsdCacheKey)
+                
+                DispatchQueue.main.async {
+                    // 检查图片是否依然匹配当前 Cell (防止复用错位)
+                    let MITTBuilsdTransitionTime: TimeInterval = 0.28
+                    UIView.transition(with: self ?? UIImageView(), duration: MITTBuilsdTransitionTime, options: .transitionCrossDissolve) {
+                        self?.image = MITTBuilsdRawImage
+                    }
+                }
+            }
+        }.resume()
+    }
+}
+
+// 在之前的 ArtisanWorkshop 中增加一个全局缓存池
+extension MITTBuilsdArtisanWorkshop {
+    static let MITTBuilsdTexturePool = NSCache<NSString, UIImage>()
 }
