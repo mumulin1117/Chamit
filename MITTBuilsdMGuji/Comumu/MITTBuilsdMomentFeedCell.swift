@@ -59,7 +59,7 @@ class MITTBuilsdMomentFeedCell: UICollectionViewCell {
             
             MITTBuilsdcommuti.widthAnchor.constraint(equalToConstant: 46),
             MITTBuilsdcommuti.heightAnchor.constraint(equalToConstant: 46),
-            MITTBuilsdcommuti.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            MITTBuilsdcommuti.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             MITTBuilsdcommuti.bottomAnchor.constraint(equalTo: MITTBuilsdPosterBoard.bottomAnchor),
         ])
         

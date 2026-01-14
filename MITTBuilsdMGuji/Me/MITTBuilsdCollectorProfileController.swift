@@ -40,6 +40,9 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        MITTBuilsdMasterAvatar.contentMode = .scaleAspectFill
+        MITTBuilsdMasterAvatar.layer.cornerRadius = 50
+        MITTBuilsdMasterAvatar.layer.masksToBounds = true
         MITTBuilsdHeroCanvasView.image = UIImage(named: "mITTBuilsdPageone")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
    
@@ -124,8 +127,13 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         // 3. Stats
         MITTBuilsdStatsHub.axis = .horizontal
         MITTBuilsdStatsHub.distribution = .fillEqually
-        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Following", labelOndex: 44))
-        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Followers", labelOndex: 444))
+        
+        let follow = MITTBuilsdCreateStatUnit(value: "0", title: "Following", labelOndex: 44)
+        follow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
+        let face = MITTBuilsdCreateStatUnit(value: "0", title: "Followers", labelOndex: 444)
+        face.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
+        MITTBuilsdStatsHub.addArrangedSubview(follow)
+        MITTBuilsdStatsHub.addArrangedSubview(face)
 //        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Like", labelOndex: 4444))
         
         // 4. Tab Switches
@@ -213,7 +221,8 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         NSLayoutConstraint.activate([
             MITTBuilsdBrandHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             MITTBuilsdBrandHeader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-          
+            MITTBuilsdBrandHeader.widthAnchor.constraint(equalToConstant: 79),
+            MITTBuilsdBrandHeader.heightAnchor.constraint(equalToConstant: 34),
             
           
          
@@ -290,7 +299,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
                 return
             }
          
-            self.MITTBuilsdBrandHeader.MITTBuilsdApplyCollectorGraphic(from: MITTBuilsdreasutl["MITTBuilsdDynamicPose"] as? String)
+            self.MITTBuilsdMasterAvatar.MITTBuilsdApplyCollectorGraphic(from: MITTBuilsdreasutl["MITTBuilsdDynamicPose"] as? String)
             self.MITTBuilsdBioIntroLabel.text = ( MITTBuilsdreasutl["MITTBuilsdMagneticAccessory"] as? String ?? "No intruduction")
             self.MITTBuilsdNameAgeLabel.text = ( MITTBuilsdreasutl["MITTBuilsdMacroLensShot"] as? String ?? "No name")
             
