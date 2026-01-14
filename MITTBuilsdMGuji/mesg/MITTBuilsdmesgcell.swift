@@ -8,11 +8,11 @@
 import UIKit
 
 class MITTBuilsdmesgcell: UICollectionViewCell {
-    private let MITTBuilsdPosterBoard = UIImageView()
+     let MITTBuilsdPosterBoard = UIImageView()
     
-    private let MITTBuilsdTopicHeadline = UILabel()
+     let MITTBuilsdTopicHeadline = UILabel()
     
-    private let MITTBuilsdcontentHeadline = UILabel()
+     let MITTBuilsdcontentHeadline = UILabel()
     
     
     override init(frame: CGRect) {

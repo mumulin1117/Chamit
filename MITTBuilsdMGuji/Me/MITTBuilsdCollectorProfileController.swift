@@ -9,7 +9,7 @@ import UIKit
 
 class MITTBuilsdCollectorProfileontroller: UIViewController {
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
-    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChamit") )
+    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdProfile") )
     
 
   
@@ -53,16 +53,56 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
     }
 
 
+   @objc func MITTBuilsdAssemblenet(UIbus:UIButton)  {
+       var lasultionPath:String = ""
+       if UIbus == MITTBuilsdCoinIcon {
+           lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdWalletTerminal.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+       }
+       
+       if UIbus == MITTBuilsdGearTrigger {
+           lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdConfigSetting.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+       }
+       
+       if UIbus == MITTBuilsdEditBadge {
+           lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdProfileEditor.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+       }
+       let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: lasultionPath)
+       potritMITTBuilsd.hidesBottomBarWhenPushed = true
+       self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+    }
+    
+    
+    
+    @objc func MITTBuilsdAtapRealtionssemblenet(UIbus:UITapGestureRecognizer)  {
+        var lasultionPath:String = ""
+        if UIbus.view?.tag == 45 {
+            lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdFollowerSphere.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+        }
+        
+        if UIbus.view?.tag == 445 {
+            lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdFollowerSphere.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+        }
+        
+        if UIbus.view?.tag == 4445 {
+            lasultionPath = MITTBuilsdBlueprintScope.MITTBuilsdProfileEditor.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "")
+        }
+        let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: lasultionPath)
+        potritMITTBuilsd.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+     }
+    
+    
     private func MITTBuilsdAssembleStructureNodes() {
          //coin
         MITTBuilsdCoinIcon.setBackgroundImage(UIImage.init(named: "mITTBuilsblanbg"), for: .normal)
         MITTBuilsdCoinIcon.setImage(UIImage.init(named: "BiBiQk"), for: .normal)
-        MITTBuilsdCoinIcon.setTitle(" 0", for: .normal)
+        MITTBuilsdCoinIcon.setTitle(" ->", for: .normal)
         MITTBuilsdCoinIcon.setTitleColor(UIColor(red: 0.71, green: 0.38, blue: 0.93, alpha: 1), for: .normal)
         MITTBuilsdCoinIcon.titleLabel?.font = UIFont(name: "Roboto-Black", size: 16)
+        MITTBuilsdCoinIcon.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
         //set
         MITTBuilsdGearTrigger.setImage(UIImage(named: "mITTBuilssite"), for: .normal)
-        
+        MITTBuilsdGearTrigger.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
         
         // 2. Identity Card
         MITTBuilsdIdentityCard.backgroundColor = .white
@@ -73,8 +113,9 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         MITTBuilsdMasterAvatar.clipsToBounds = true
       
         MITTBuilsdEditBadge.setImage(UIImage.init(named: "mITTBuilsedit"), for: .normal)
-
-        MITTBuilsdNameAgeLabel.text = "Anna | 26"
+        MITTBuilsdEditBadge.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
+       
+//        MITTBuilsdNameAgeLabel.text = "Anna | 26"
         MITTBuilsdNameAgeLabel.font = .systemFont(ofSize: 20, weight: .bold)
         MITTBuilsdBioIntroLabel.text = "Introduction"
         MITTBuilsdBioIntroLabel.textColor = .lightGray
@@ -83,19 +124,21 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         // 3. Stats
         MITTBuilsdStatsHub.axis = .horizontal
         MITTBuilsdStatsHub.distribution = .fillEqually
-        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Following"))
-        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Followers"))
-        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Like"))
+        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Following", labelOndex: 44))
+        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Followers", labelOndex: 444))
+//        MITTBuilsdStatsHub.addArrangedSubview(MITTBuilsdCreateStatUnit(value: "0", title: "Like", labelOndex: 4444))
         
         // 4. Tab Switches
         MITTBuilsdSetupTabButtons()
     }
 
-    private func MITTBuilsdCreateStatUnit(value: String, title: String) -> UIView {
+    private func MITTBuilsdCreateStatUnit(value: String, title: String,labelOndex:Int) -> UIView {
         let MITTBuilsdBox = UIStackView()
         MITTBuilsdBox.axis = .vertical
         MITTBuilsdBox.alignment = .center
+        MITTBuilsdBox.tag = labelOndex+1
         let MITTBuilsdV = UILabel()
+        MITTBuilsdV.tag = labelOndex
         MITTBuilsdV.text = value
         MITTBuilsdV.font = .systemFont(ofSize: 18, weight: .bold)
         let MITTBuilsdT = UILabel()
@@ -219,11 +262,49 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
             
             MITTBuilsdMesgholderimg.topAnchor.constraint(equalTo: MITTBuilsdTabSwitcher.bottomAnchor, constant: 30),
             MITTBuilsdMesgholderimg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            MITTBuilsdMesgholderimg.widthAnchor.constraint(equalToConstant: 80),
-            MITTBuilsdMesgholderimg.heightAnchor.constraint(equalToConstant: 80)
+            MITTBuilsdMesgholderimg.widthAnchor.constraint(equalToConstant: 100),
+            MITTBuilsdMesgholderimg.heightAnchor.constraint(equalToConstant: 100)
             
             
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MITTBuilsdCommitAuthRequest()
+    }
+    private func MITTBuilsdCommitAuthRequest() {
+      
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
+        let cantnotUID = UserDefaults.standard.object(forKey: "MITTBuilsdVisualIdentity") as? Int ?? 0
+        
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/iuqvqyz/gfzgtxdhjgwtbxq", MITTBuilsdParams: ["MITTBuilsdShelfOrganization":cantnotUID]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
+                 
+                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Dictionary<String,Any>
+                    
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                return
+            }
+         
+            self.MITTBuilsdBrandHeader.MITTBuilsdApplyCollectorGraphic(from: MITTBuilsdreasutl["MITTBuilsdDynamicPose"] as? String)
+            self.MITTBuilsdBioIntroLabel.text = ( MITTBuilsdreasutl["MITTBuilsdMagneticAccessory"] as? String ?? "No intruduction")
+            self.MITTBuilsdNameAgeLabel.text = ( MITTBuilsdreasutl["MITTBuilsdMacroLensShot"] as? String ?? "No name")
+            
+            if let folloeingcountlbl = self.view.viewWithTag(44) as? UILabel{
+                folloeingcountlbl.text = "\( MITTBuilsdreasutl["MITTBuilsdSandingFinish"] as? Int ?? 0)"
+            }
+            if let likingcountlbl = self.view.viewWithTag(44) as? UILabel{
+                likingcountlbl.text = "\( MITTBuilsdreasutl["MITTBuilsdVarnishLayer"] as? Int ?? 0)"
+            }
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
+        }
+
     }
 }
 

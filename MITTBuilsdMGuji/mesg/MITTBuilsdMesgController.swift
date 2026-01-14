@@ -9,7 +9,9 @@ import UIKit
 
 class MITTBuilsdMesgController: UIViewController {
 
- 
+    
+     var MITTBuilsdTopActivys:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
+   
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChmesg") )
 
@@ -28,12 +30,18 @@ class MITTBuilsdMesgController: UIViewController {
         return quickImg
     }()
    @objc func MITTBuilsdbeginmat()  {
-        
+       let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVisualPicker.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+       potritMITTBuilsd.hidesBottomBarWhenPushed = true
+       self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+      
     }
-    private let MITTBuilsdAvatarThumbnail = UIImageView()
+    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MITTBuilsdCommitAuthRequest()
+    }
    
   
     override func viewDidLoad() {
@@ -121,20 +129,68 @@ extension MITTBuilsdMesgController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
-        return 3
+        return MITTBuilsdTopActivys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MITTBuilsdmesgcell", for: indexPath) as! MITTBuilsdmesgcell
-       
+        cell.MITTBuilsdPosterBoard.MITTBuilsdApplyCollectorGraphic(from: MITTBuilsdTopActivys[indexPath.row]["MITTBuilsdBlindPick"] as? String)
+        
+        cell.MITTBuilsdTopicHeadline.text = MITTBuilsdTopActivys[indexPath.row]["MITTBuilsdMysteryReveal"] as? String
+        
+        cell.MITTBuilsdcontentHeadline.text = MITTBuilsdTopActivys[indexPath.row]["MITTBuilsdProbabilityRatio"] as? String
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        if let reciverdsasd =  MITTBuilsdTopActivys[indexPath.row]["MITTBuilsdUnboxingExperience"] as? Int{
+            let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVerificationLane.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(reciverdsasd)"))
+            potritMITTBuilsd.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+        }
+            
        
     }
 
-  
+    private func MITTBuilsdCommitAuthRequest() {
+      
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
+       
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/kadpigwhbfqez/xpgeu", MITTBuilsdParams: ["MITTBuilsdTradeCommunity":"87531697"]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
+                 
+                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                return
+            }
+         
+            self.MITTBuilsdTopActivys = MITTBuilsdreasutl.map { dix in
+                if let MITTBuilsdxu = (dix["MITTBuilsdEnthusiastForum"] as? Array<[String:Any]>)?.first{
+                    MITTBuilsdxu
+                }else{
+                    [:]
+                    
+                }
+                
+            }
+            if self.MITTBuilsdTopActivys.count == 0{
+                self.MITTBuilsdMesgholderimg.isHidden = false
+                self.MITTBuilsdMainScrollCanvas.isHidden = true
+            }else{
+                self.MITTBuilsdMainScrollCanvas.isHidden = false
+                self.MITTBuilsdMesgholderimg.isHidden = true
+            }
+            self.MITTBuilsdMainScrollCanvas.reloadData()
+            
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
+        }
+
+    }
 }
 

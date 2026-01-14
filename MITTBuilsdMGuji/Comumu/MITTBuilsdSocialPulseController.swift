@@ -10,35 +10,28 @@ import UIKit
 
 class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCellDelegate {
     private var MITTBuilsdActiveFeedType: Int = 0
-    
+    private var MITTBuilsdTopActivys:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
+   
     func MITTBuilsdreloadSections(with: Int) {
         self.MITTBuilsdActiveFeedType = with
-        self.MITTBuilsdPortalCanvas.reloadSections(IndexSet(integer: 1))
+        MITTBuilsdCommitAuthRequest()
     }
     
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdcommu") )
     
-    private let MITTBuilsdAvatarLead = UIImageView()
+    private let MITTBuilsdAvatarLead = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdPortalCanvas: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
   
+    @objc func MITTBuilsdActionHubTriggeraction()  {
+        let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdMatchCenter.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+        potritMITTBuilsd.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+        
     
-  
-//    init() {
-//        let MITTBuilsdLayout = UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
-//            if section == 0 {
-//                return MITTBuilsdSocialPulseController.MITTBuilsdCraftMatchRollSection()
-//            } else {
-//                return MITTBuilsdSocialPulseController.MITTBuilsdCraftFeedFlowSection()
-//            }
-//        }
-//
-//        super.init(nibName: nil, bundle: nil)
-//    }
-
-//    required init?(coder: NSCoder) { fatalError() }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +43,7 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
         MITTBuilsdInitializeBaseAesthetics()
         MITTBuilsdConstructInterfaceNodes()
         MITTBuilsdApplyGeometryConstraints()
+        MITTBuilsdCommitAuthRequest()
     }
     private func MITTBuilsdConstructInterfaceNodes() {
         // 确保画布填充整个屏幕
@@ -104,23 +98,7 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
         ])
     }
 
-//    static func MITTBuilsdCraftMatchRollSection() -> NSCollectionLayoutSection {
-//        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.92), heightDimension: .absolute(110 + 47 + 32)), subitems: [item])
-//        let section = NSCollectionLayoutSection(group: group)
-//        section.orthogonalScrollingBehavior = .groupPagingCentered
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//        return section
-//    }
-//
-//    static func MITTBuilsdCraftFeedFlowSection() -> NSCollectionLayoutSection {
-//        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(400)))
-//        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(400)), subitems: [item])
-//        let section = NSCollectionLayoutSection(group: group)
-//        section.interGroupSpacing = 20
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 100, trailing: 15)
-//        return section
-//    }
+
 }
 
 extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -140,7 +118,7 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
     func numberOfSections(in collectionView: UICollectionView) -> Int { return 2 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 5
+        return section == 0 ? 1 : MITTBuilsdTopActivys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -150,9 +128,76 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Moment", for: indexPath) as! MITTBuilsdMomentFeedCell
-        cell.MITTBuilsdPopulateFakeData(isVideo: MITTBuilsdActiveFeedType == 1)
+        cell.MITTBuilsdPopulateFakeData(isVideo: MITTBuilsdActiveFeedType == 1, infoData: MITTBuilsdTopActivys[indexPath.row])
+        cell.MITTBuilsdcommuti.addTarget(self, action: #selector(MITTBAlert), for: .touchUpInside)
         return cell
     }
+   @objc func MITTBAlert(){
+        let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdReportEntry.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+        potritMITTBuilsd.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            MITTBuilsdActionHubTriggeraction()
+            return
+        }
+        
+        MITTBuilsdNavigateToDetail(at: indexPath.row)
+    }
+    
+    private func MITTBuilsdNavigateToDetail(at index: Int) {
+        if  self.MITTBuilsdActiveFeedType == 0  ,let dumnId = MITTBuilsdTopActivys[index]["MITTBuilsdCustomizedSkin"] as? Int{
+            let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVaultDetail.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(dumnId)"))
+            potritMITTBuilsd.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+            return
+            
+           
+            
+            
+        }
+        if  self.MITTBuilsdActiveFeedType == 1  ,let dumnId = MITTBuilsdTopActivys[index]["MITTBuilsdCustomizedSkin"] as? Int{
+            let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVaultDetail.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(dumnId)&type=2"))
+            potritMITTBuilsd.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+        }
+       
+       
+    }
+    
+    private func MITTBuilsdCommitAuthRequest() {
+      
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
+       
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/hmbrvmcxz/yfmqdoyxig", MITTBuilsdParams: ["MITTBuilsdExhibitionPiece":"87531697","MITTBuilsdDioramaBase":1,"MITTBuilsdModularStage":20]) {  andu in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            
+            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
+                 
+                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    
+            else {
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                return
+            }
+         
+            self.MITTBuilsdTopActivys = MITTBuilsdreasutl.filter({ abbody in
+                if  self.MITTBuilsdActiveFeedType == 0  {
+                    return abbody["MITTBuilsdRareChase"] as?  String  == nil
+                }
+                return abbody["MITTBuilsdRareChase"] as?  String  != nil
+            })
+        
+            self.MITTBuilsdPortalCanvas.reloadData()
+            
+        } MITTBuilsdFailureBlock: {  ertttt in
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
+        }
+
+    }
+    
 }
 
 

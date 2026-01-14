@@ -14,13 +14,7 @@ class MITTBuilsdArtPortalController: UIViewController {
     private var MITTBuilsdActiveArtTokenId: String?
     private var MITTBuilsdManifestRegistry: String
     
-    private lazy var MITTBuilsdDiscoveryIndicator: UIActivityIndicatorView = {
-        let MITTBuilsdIndicator = UIActivityIndicatorView(style: .large)
-        MITTBuilsdIndicator.tintColor = .black
-        MITTBuilsdIndicator.hidesWhenStopped = true
-        MITTBuilsdIndicator.color = .black
-        return MITTBuilsdIndicator
-    }()
+   
     
     private lazy var MITTBuilsdExhibitDisplay: WKWebView = {
         let MITTBuilsdPreferences = WKWebViewConfiguration()
@@ -63,17 +57,13 @@ class MITTBuilsdArtPortalController: UIViewController {
     private func MITTBuilsdConstructVisualStage() {
         let MITTBuilsdBackdrop = UIImageView(frame: UIScreen.main.bounds)
         MITTBuilsdBackdrop.contentMode = .scaleAspectFill
-        MITTBuilsdBackdrop.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
+        MITTBuilsdBackdrop.image = UIImage(named: "mITTBuilsdPageone")//MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         view.addSubview(MITTBuilsdBackdrop)
-        
-        view.backgroundColor = .black
+       
         view.addSubview(MITTBuilsdExhibitDisplay)
         MITTBuilsdExhibitDisplay.frame = view.bounds
         MITTBuilsdExhibitDisplay.scrollView.contentInsetAdjustmentBehavior = .never
-        
-        MITTBuilsdDiscoveryIndicator.center = view.center
-        view.addSubview(MITTBuilsdDiscoveryIndicator)
-        MITTBuilsdDiscoveryIndicator.startAnimating()
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
     }
     
     private func MITTBuilsdInitializeDataStream() {
@@ -93,7 +83,7 @@ extension MITTBuilsdArtPortalController: WKNavigationDelegate, WKUIDelegate {
         let MITTBuilsdDisplayDelay: DispatchTime = .now() + 2.0
         DispatchQueue.main.asyncAfter(deadline: MITTBuilsdDisplayDelay) {
             self.MITTBuilsdExhibitDisplay.isHidden = false
-            self.MITTBuilsdDiscoveryIndicator.stopAnimating()
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
         }
     }
 }
@@ -145,7 +135,7 @@ extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTra
     
     private func MITTBuilsdProcessVaultAcquisition(_ MITTBuilsdToken: String) {
         view.isUserInteractionEnabled = false
-        MITTBuilsdDiscoveryIndicator.startAnimating()
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
         MITTBuilsdActiveArtTokenId = MITTBuilsdToken
         
         let MITTBuilsdProductIdentitySet = Set([MITTBuilsdToken])
@@ -189,7 +179,7 @@ extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTra
     
     private func MITTBuilsdHandleTransactionOutcome(_ MITTBuilsdNotice: String, MITTBuilsdSeverity: Bool) {
         view.isUserInteractionEnabled = true
-        MITTBuilsdDiscoveryIndicator.stopAnimating()
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
         
         let MITTBuilsdStatusLog = MITTBuilsdSeverity ? "Critical:" : "Success:"
         print("MITTBuilsd \(MITTBuilsdStatusLog) \(MITTBuilsdNotice)")
@@ -206,12 +196,12 @@ enum MITTBuilsdBlueprintScope: String {
 
     case MITTBuilsdSparkHub = "pages/interestDetails/index?topicId="
     case MITTBuilsdVaultDetail = "pages/DynamicDetails/index?dynamicId="
-    case MITTBuilsdAromaShowcase = "pages/DynamicDetails/index?dynamicId=123&type=2"
+   
     case MITTBuilsdMomentGallery = "pages/publishDynamic/index?"
     
     case MITTBuilsdMatchCenter = "pages/RandomMatching/index?"
     case MITTBuilsdVisualPicker = "pages/selectUser/index?"
-    case MITTBuilsdEventPortal = " pages/activityDetail/index?activityId="
+    case MITTBuilsdEventPortal = "pages/activityDetail/index?activityId="
     case MITTBuilsdReleaseNode = "pages/ReleaseEvent/index?"
     case MITTBuilsdVerificationLane = "pages/newsDetails/index?userId="
     case MITTBuilsdReportEntry = "pages/report/index?"

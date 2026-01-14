@@ -31,7 +31,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChamit") )
     private let MITTBuilsdActionHubTrigger = UIButton(type: .system)
-    private let MITTBuilsdAvatarThumbnail = UIImageView()
+    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
    
@@ -81,7 +81,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
       
        
         MITTBuilsdActionHubTrigger.setImage(UIImage(named: "mITTBuilsdPageAdd"), for: .normal)
-        
+        MITTBuilsdActionHubTrigger.addTarget(self, action: #selector(MITTBuilsdActionHubTriggeraction), for: .touchUpInside)
         MITTBuilsdActionHubTrigger.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdActionHubTrigger.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdActionHubTrigger)
@@ -93,6 +93,13 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         view.addSubview(MITTBuilsdAvatarThumbnail)
     }
 
+    
+   @objc func MITTBuilsdActionHubTriggeraction()  {
+       let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdReleaseNode.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
+       potritMITTBuilsd.hidesBottomBarWhenPushed = true
+       self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+       
+    }
     private func MITTBuilsdSetupCollectionSurface() {
         let MITTBuilsdLayoutScheme = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             if sectionIndex == 0 {
@@ -221,7 +228,16 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        
+        if indexPath.section == 0 {
+            if let acc = MITTBuilsdTopActivys[indexPath.row]["MITTBuilsdBallJoint"] as? Int{
+                let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdEventPortal.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(acc)"))
+                potritMITTBuilsd.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+            }
+            
+           
+        }else if indexPath.section == 1 {
             // 1. 更新选中的索引
             MITTBuilsdActiveCategoryIndex = indexPath.item
             
@@ -243,16 +259,18 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
 //            print("MITTBuilsd: Switched category to \(MITTBuilsdInterestFilterStrip[indexPath.item])")
         } else if indexPath.section == 2 {
             // 模拟点击进入潮玩详情页
-            MITTBuilsdNavigateToDetail(at: indexPath.item)
+            if let topicID = MITTBuilsdCurrentDisplayList[indexPath.row]["MITTBuilsdOutfitAccessory"] as? Int{
+                MITTBuilsdNavigateToDetail(at: "\(topicID)")
+            }
+           
         }
     }
 
-    // 虚假效果函数：模拟导航交互
-    private func MITTBuilsdNavigateToDetail(at index: Int) {
-        let MITTBuilsdDetailNode = UIViewController()
-        MITTBuilsdDetailNode.view.backgroundColor = .white
-        MITTBuilsdDetailNode.title = "Sculpt Detail"
-        self.navigationController?.pushViewController(MITTBuilsdDetailNode, animated: true)
+    // 兴趣详情
+    private func MITTBuilsdNavigateToDetail(at index: String) {
+        let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdSparkHub.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: index))
+        potritMITTBuilsd.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
     }
 }
 
@@ -368,4 +386,8 @@ extension MITTBuilsdDiscoveryFeedController {
      
         
     }
+    
+    
+    
+    
 }
