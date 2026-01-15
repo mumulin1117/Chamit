@@ -121,8 +121,8 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             container: MITTBuilsdEmailFieldContainer,
             icon: MITTBuilsdEmailIconNode,
             input: MITTBuilsdEmailInputSurface,
-            title: "MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")Email",
-            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Enter your email",
+            title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"UXrPo74VlQ9CwWS+QeSZN1xiuNYaRhTlHc7sH7V1R6qnxR+73Q=="),
+            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"gM2ec1yYlL7knabkagrDDL1mAvBb87vqNlZGXyW9g3ZaNMX7KKbVtz9ZUTYnE6ZN"),
             symbol: "envelope.fill"
         )
         
@@ -131,8 +131,8 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             container: MITTBuilsdSecretFieldContainer,
             icon: MITTBuilsdSecretIconNode,
             input: MITTBuilsdSecretInputSurface,
-            title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Password",
-            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Enter password",
+            title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"/B/mf0Al3FrEOcGuRjrQA3xAK+4VBt5tiKgf5qMrNf813Nk09Nf1wQ=="),
+            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"7XdABKz0rh9ntGPoZ/EtyCPRUigM3tigkp5HcE8+y+BpLeyNeDWU9pFIoa402A=="),
             symbol: "lock.fill"
         )
         MITTBuilsdSecretInputSurface.isSecureTextEntry = true
@@ -237,7 +237,7 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
         guard let MITTBuilsdTargetEmail = MITTBuilsdEmailInputSurface.text, !MITTBuilsdTargetEmail.isEmpty,
               let MITTBuilsdTargetKey = MITTBuilsdSecretInputSurface.text, !MITTBuilsdTargetKey.isEmpty else {
             MITTBuilsdVibrateInterfaceFailure()
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Email and password can not be empty!")
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"QdaKt06AMNl+K/ERiNPDMrLh1YCbWPG9EmzitUmnpNV/juRUbcBeUQ5rUrw5/kLXHhtOgU/CUGXdn52p6QWJ0zTfKqw="))
            
             return
         }
@@ -249,10 +249,10 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                  let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Dictionary<String,Any>
+                  let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? Dictionary<String,Any>
                     
             else {
-                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Email and password error!")
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"2aT5AgDXIG8FEigwH69URGEWvusQiv4WB31srTJueTD7Oy4RIBRyb3EIYA7a0x4DmuyFHMHnudQb"))
                
                 return
             }

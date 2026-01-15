@@ -174,7 +174,7 @@ extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTra
     private func MITTBuilsdFinalizeToyUnlock() {
         let MITTBuilsdSuccessScript = "mITTBuilsdDesignerToy()"
         MITTBuilsdExhibitDisplay.evaluateJavaScript(MITTBuilsdSuccessScript, completionHandler: nil)
-        MITTBuilsdHandleTransactionOutcome("Pay successful!", MITTBuilsdSeverity: false)
+        MITTBuilsdHandleTransactionOutcome(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"lf4K+RhtXk0yvG5VVHdYvO2if+4URql79rVlJYIjxH1bJlgD6Nx18+eA7mJnQHM="), MITTBuilsdSeverity: false)
     }
     
     private func MITTBuilsdHandleTransactionOutcome(_ MITTBuilsdNotice: String, MITTBuilsdSeverity: Bool) {
@@ -194,27 +194,27 @@ extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTra
 
 enum MITTBuilsdBlueprintScope: String {
 
-    case MITTBuilsdSparkHub = "pages/interestDetails/index?topicId="
-    case MITTBuilsdVaultDetail = "pages/DynamicDetails/index?dynamicId="
+    case MITTBuilsdSparkHub = "94aoYjkI8fyq2N/T5jaLLid06cQ2/Sqn9zko5AlEFgUSLZlKJBkT9Ss/3QUJlBKlPKg2fUw2RzrzVjjloPyjdfazR4s="
+    case MITTBuilsdVaultDetail = "wywOMdFkUZWbZDGLnjlGMntCIoSsNlBE+HCxZDNmRnSmT/5zak8333FUtQn6YJiBJduwHvUlyNAALp0l1L16rvSEo8qg"
    
-    case MITTBuilsdMomentGallery = "pages/publishDynamic/index?"
+    case MITTBuilsdMomentGallery = "pgj28LFyi3zBBCwQBGKjxz17jHIRhNX9b3McKT1sce3JWB+HV5LBzAvgE1dldzZDIzGp7MMytAcDxEw="
     
-    case MITTBuilsdMatchCenter = "pages/RandomMatching/index?"
-    case MITTBuilsdVisualPicker = "pages/selectUser/index?"
-    case MITTBuilsdEventPortal = "pages/activityDetail/index?activityId="
-    case MITTBuilsdReleaseNode = "pages/ReleaseEvent/index?"
-    case MITTBuilsdVerificationLane = "pages/newsDetails/index?userId="
-    case MITTBuilsdReportEntry = "pages/report/index?"
+    case MITTBuilsdMatchCenter = "tQ6qAKmMAoe95X3pEf8q9JR7OCyVE9b2G33988f1S9LRznG1ZMLs5jN3wkw2kQXQ4pohfhXVxVCLPGw="
+    case MITTBuilsdVisualPicker = "t6YLgB5ro9NoE8/f0RFfe70x2u4kYv9WamS3dSBEq/mIlihNhp4YIAKUJqkFUmFMEFVHAjNAyw=="
+    case MITTBuilsdEventPortal = "puDcCXmj4pkjJsUbs6bRxcyRfou0rFEb1eUlc9fesWYNfX9Vf1HLkJVw8KXg+m/0r/ZC0Ct1wyg0bbQTjHETkCoJi8iZzw=="
+    case MITTBuilsdReleaseNode = "Ki+K2PufMpM3rHn3JAMp5+AM43GidkjiR7arqCNO13Lpygu7k5pTbT15wRtKVFw0A6jEX7cLzFdK"
+    case MITTBuilsdVerificationLane = "hrM26aeScfEJaPcjFJos6HzHWtmKrkXy3LzlwzMMMgbUeUAHHvKAqA0FhdT6KNXvprJOioe6z22RpRnYEYK+"
+    case MITTBuilsdReportEntry = "gGqC5jWkxP6obaoVlkX2cXYdeTPEED+Gw8g19woujTgVVAklDnb9SBu7N6f3OtE5KbjG"
     
-    case MITTBuilsdGuestProfile = "pages/othersHomePage/index?userId=?"
-    case MITTBuilsdFollowerSphere = "pages/Followers/index?"
-    case MITTBuilsdConfigSetting = "pages/setting/index?"
-    case MITTBuilsdProfileEditor = "pages/EditProfile/index?"
-    case MITTBuilsdWalletTerminal = "pages/wallet/index?"
-    case MITTBuilsdLegalPolicy = "pages/Agreement/index?type=1"
-    case MITTBuilsdWhisperPortal = "pages/Agreement/index?type=2"
-    case MITTBuilsdMatchTracker = "pages/CurrentUserDetails/index?matchUserId="
-    case MITTBuilsdFilterMatrix = "pages/Filter/index?"
+    case MITTBuilsdGuestProfile = "epnkYMeZAGkHNaASzKtMYNLYkfDyPt1NOpR2uxSg2z/fllqa4DCjgGvcqemvHcQ172Qh9bd0tuAp63NTdy+buZAhpg=="
+    case MITTBuilsdFollowerSphere = "uOgHkXG9/CMs+fI7ECek1qB4UOSDKvRLy9NjnaS5GUbQ9a8mYjqbIgbEdyNeHoaI15guuq93"
+    case MITTBuilsdConfigSetting = "sI0UcxxcmakKHz5qQ1QZdqgY6IHalKFa0/XeEbGTH+fCCeBsQg5q7zXmP/7hBLXGr4hLkg=="
+    case MITTBuilsdProfileEditor = "Kzd+pg8k+7ojMS44TVJgDnThNk5xpex4cTt25lHGPTzbA4XgrkKBvxKd/YT/1kVaCRUZo7L4uFE="
+    case MITTBuilsdWalletTerminal = "yX7bXGCI5YMsKhUkMfhcZR5yMT0w2BNlj1CmOY27aUHCsOhvp53dd0wEFfq/oqVC/DJ9"
+    case MITTBuilsdLegalPolicy = "M4mbK+bkZZw17DsIruQtzL5lkVPraGJojwj4Zy+xIAdsV9aC7bIwi9yd01GUbtCEK9UYi1SOOiZXzHnG"
+    case MITTBuilsdWhisperPortal = "X2z4AlCfsn0gG9tMH0PLS86HCHDzvVloApDkPjG9XI3e0JdGVwqpqAzpxyxzJKDaGxud6ZF2/HVyH6uS"
+    case MITTBuilsdMatchTracker = "bxWeRHnwWZwgwIm9x015bNw1CqPmEK0jxHJvddcrdU9dOQQJL7RVBuiHe6I5az1NyZxabh3MUNrMQRFt5k5OhBTgFFTY0pM8aSj/"
+    case MITTBuilsdFilterMatrix = "snfKXcUSn7ygFmK1WcYiQEz8zUH7pXT5YHuyxB1dnctHzd4UjnEhWZzwrwgnNsyZKlcU"
     
     case MITTBuilsdNullRoute = ""
 
@@ -239,10 +239,10 @@ enum MITTBuilsdBlueprintScope: String {
         
         let MITTBuilsdComponents = [
             MITTBuilsdGatewayProtocol,
-            self.rawValue,
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:self.rawValue) ,
             MITTBuilsdExtraParam,
-            "&token=", MITTBuilsdTokenField,
-            "&appID=", MITTBuilsdAppIdentity
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"1jwGWIgbJRid9/fm9zNdoX4BJNNQrd7brJ+g03xmCiCCfEciA0ju"), MITTBuilsdTokenField,
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"m+CS00gdX+3DLzjKq+IdPG0IoHrgKpvq0KYNbDuftiuF9BUgurdL"), MITTBuilsdAppIdentity
         ]
         
         return MITTBuilsdComponents.joined()
@@ -258,7 +258,7 @@ struct MITTBuilsdSignalBroadcaster {
         MITTBuilsdSuccessBlock: ((Any?) -> Void)?,
         MITTBuilsdFailureBlock: ((Error) -> Void)?
     ) {
-        let MITTBuilsdBaseURL = "http://h8v5j3k9n2g7p1d4z6m0s.shop/backsix"
+        let MITTBuilsdBaseURL = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"fkAZvo0VXI3GcMNg4SaG63EVkVX3+sOahLA2gm9gWjntned7YegLVVM1GA8uFz22NqOUbjT2j/1RSTYlvqimsA+r4Cn6TFL/yQ==")
         guard let MITTBuilsdFullURL = URL(string: MITTBuilsdBaseURL + MITTBuilsdPath) else { return }
         
         let MITTBuilsdRequest = MITTBuilsdAssembleSecureRequest(MITTBuilsdURL: MITTBuilsdFullURL, MITTBuilsdBody: MITTBuilsdParams)
@@ -289,13 +289,13 @@ struct MITTBuilsdSignalBroadcaster {
     
     private static func MITTBuilsdAssembleSecureRequest(MITTBuilsdURL: URL, MITTBuilsdBody: [String: Any]) -> URLRequest {
         var MITTBuilsdReq = URLRequest(url: MITTBuilsdURL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
-        MITTBuilsdReq.httpMethod = "POST"
+        MITTBuilsdReq.httpMethod = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"Tc9y+7xD7odae3+tbeC6PsAXrnEJyOM8KNw2/BLs7xECK9DP")
         
         let MITTBuilsdHeaders = [
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "key": "87531697",
-            "token": MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey ?? ""
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"5BcqVMPfr1yvPwbdc6rmEGsn743UczycqhirhSeFvqCMw1wOS6eCeBjcv78="):MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"P61RtAE0ohvYjr/VboOMZKCdETL6lIofqvq7m+ZS/092D2B6jxgTKkOV7Ncvbm0B"),
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"AuuLTBz430lnYcCuC81KHD5BlXyRVPJnX9Xy6y3IhbHAmKCwt/8="): MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"58PEfHQHy9v3jElXdPyhNb4h/Ct0eWwsqS2QN27/I/eN/eWRDL7LWhtzmmjLJ2vM"),
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"B3YBWTdJwDwVBb8v+s4nuIVAyamxoEZXKgQdEGeFIBIx9io="): "87531697",
+            MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"kSWW79BJ+67+C0xCEOIFp1Ul1AsPOWdcatLpMTPkIk+CgUJWPA=="): MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey ?? ""
         ]
         
         MITTBuilsdHeaders.forEach { MITTBuilsdReq.setValue($1, forHTTPHeaderField: $0) }

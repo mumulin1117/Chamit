@@ -128,9 +128,9 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         MITTBuilsdStatsHub.axis = .horizontal
         MITTBuilsdStatsHub.distribution = .fillEqually
         
-        let follow = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Following", labelOndex: 44)
+        let follow = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"8pWpsnQvGYwWG2bN/dRkbMdCK7slFMgzsepcI0Qv7Rw1FKbwEe1EVWk="), labelOndex: 44)
         follow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
-        let face = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Followers", labelOndex: 444)
+        let face = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"yVgvMRRv+wEObKRUzhz6yyTI9bL04TuXmjUeGDnRCcwHKTO5keWJpEc="), labelOndex: 444)
         face.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
         MITTBuilsdStatsHub.addArrangedSubview(follow)
         MITTBuilsdStatsHub.addArrangedSubview(face)
@@ -292,7 +292,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Dictionary<String,Any>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? Dictionary<String,Any>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()

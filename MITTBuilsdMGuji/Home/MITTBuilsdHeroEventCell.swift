@@ -83,7 +83,7 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
         MITTBuilsdQuotaStatusLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdQuotaStatusLabel)
         
-        MITTBuilsdEnlistActionTrigger.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Join", for: .normal)
+        MITTBuilsdEnlistActionTrigger.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"ndRGYzz0luf/Zpujcllm4MdaT38jvS32qr3w4qL2XqFfNKHO"), for: .normal)
         MITTBuilsdEnlistActionTrigger.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
         MITTBuilsdEnlistActionTrigger.backgroundColor = UIColor(red: 0.63, green: 0.47, blue: 0.94, alpha: 1.0)
         MITTBuilsdEnlistActionTrigger.layer.cornerRadius = 18

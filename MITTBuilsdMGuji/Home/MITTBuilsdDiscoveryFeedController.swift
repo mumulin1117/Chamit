@@ -304,7 +304,7 @@ extension MITTBuilsdDiscoveryFeedController {
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
@@ -350,7 +350,7 @@ extension MITTBuilsdDiscoveryFeedController {
     
     private func MITTBuilsdOrganizeData(from andu: [String: Any]?) {
         guard let MITTBuilsdResponse = andu,
-              let MITTBuilsdRawList = MITTBuilsdResponse[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? [[String: Any]] else { return }
+              let MITTBuilsdRawList = MITTBuilsdResponse[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? [[String: Any]] else { return }
         
         // 清空旧数据
         var MITTBuilsdTempMap: [String: [[String: Any]]] = [:]

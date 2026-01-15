@@ -55,7 +55,7 @@ class MITTBuilsdMatchCardCell: UICollectionViewCell {
     }
     private func MITTBuilsdSetupSegmentNodes() {
         MITTBuilsdMomentSwitch.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"1/0mWzIE7nL7K1dvNfJt8aq5zjVRf3ETwAw6YFRgTSMx1XsdOfY="), for: .normal)
-        MITTBuilsdVideoSwitch.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Video", for: .normal)
+        MITTBuilsdVideoSwitch.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"9+Wp1U7dP5X2J3ID0DozYFeITm+duBVYlXZbhEgTKZqvLBmKHA=="), for: .normal)
         
         [MITTBuilsdMomentSwitch, MITTBuilsdVideoSwitch].forEach {
             $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)

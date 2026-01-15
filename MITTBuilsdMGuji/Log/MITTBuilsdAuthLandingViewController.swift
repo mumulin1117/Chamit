@@ -75,8 +75,8 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
             .foregroundColor: UIColor.white
         ]
         
-        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Terms of Service>"))
-        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Privacy Policy>"))
+        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"f+IgZ0Tv1obwjMHFV9GcHaYcJSAKdndXlNEEEWhoZM3ZkQGy3czX2BX1PEbuHbl96oY=")))
+        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"s0jW8ysy3P/+OB8/WRVyOWO7d9ktI2RVtRFTxq2D+BqH+wlphanJXJ41NFjdKH0o")))
         
         MITTBuilsdLegalRichTextAnchor.attributedText = MITTBuilsdAttributedPrompt
         MITTBuilsdLegalRichTextAnchor.backgroundColor = .clear
@@ -132,7 +132,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
     @objc private func MITTBuilsdExecuteSessionIgnition() {
         guard MITTBuilsdIsComplianceVerified else {
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Please agree to our terms of service at first!")
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"NR3LSPxE1dyJrxv4tqQ98T7ZsOPp+cZJes9hZ4q0hxRMF0UUHt8Ctg0CtHnlSLUhF16KHVHe6TzkxeyMQpEQrNDVM6kPMoN8ZAMW+M2Z"))
             
             return
         }
@@ -151,7 +151,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
         let MITTBuilsdCharacterIndex = MITTBuilsdLegalRichTextAnchor.layoutManager.characterIndex(for: MITTBuilsdTapLocation, in: MITTBuilsdLegalRichTextAnchor.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         
         let MITTBuilsdFullString = MITTBuilsdLegalRichTextAnchor.text ?? ""
-        if let MITTBuilsdTermsRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Terms of Service>") {
+        if let MITTBuilsdTermsRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"y9UH9KpBIm5CTsEkKRzMry0Q6bbJZMqtRuYr/jrd6GR5GYTASWFdD8zKGGitx8CBWSk=")) {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdTermsRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
                 let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdLegalPolicy.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
@@ -160,7 +160,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
             }
         }
         
-        if let MITTBuilsdPrivacyRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Privacy Policy>") {
+        if let MITTBuilsdPrivacyRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"xJtx0X4mwut5+7wQ7hoQcBhdV8GvVjCM2GJkp0lkLjKD33b7h15YdA28mpaAUv9V")) {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdPrivacyRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
                 let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdWhisperPortal.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
@@ -178,7 +178,7 @@ extension UITextField {
         MITTBuilsdBlueprintToolbar.sizeToFit()
         
         let MITTBuilsdVoidSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let MITTBuilsdArtifactLabel = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Done"
+        let MITTBuilsdArtifactLabel = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"94FZmd9jgzjqUhkHj73gC13WqxASLgttRlg8VtCOezNa7LT7")
         
         let MITTBuilsdExecutionUnit = { (MITTBuilsdFactor: CGFloat) -> CGFloat in
             return MITTBuilsdFactor * MITTBuilsdExhibitionScale

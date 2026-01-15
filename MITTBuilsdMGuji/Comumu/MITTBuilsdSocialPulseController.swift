@@ -41,18 +41,18 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
    
         view.addSubview(MITTBuilsdHeroCanvasView)
         MITTBuilsdInitializeBaseAesthetics()
-        MITTBuilsdConstructInterfaceNodes()
+//        MITTBuilsdConstructInterfaceNodes()
         MITTBuilsdApplyGeometryConstraints()
         MITTBuilsdCommitAuthRequest()
     }
-    private func MITTBuilsdConstructInterfaceNodes() {
-        // 确保画布填充整个屏幕
-        MITTBuilsdPortalCanvas.translatesAutoresizingMaskIntoConstraints = false
-        
-        // 注册所有 Cell 节点
-        MITTBuilsdPortalCanvas.register(MITTBuilsdMatchCardCell.self, forCellWithReuseIdentifier: "Match")
-        MITTBuilsdPortalCanvas.register(MITTBuilsdMomentFeedCell.self, forCellWithReuseIdentifier: "Moment")
-    }
+//    private func MITTBuilsdConstructInterfaceNodes() {
+//        // 确保画布填充整个屏幕
+//        MITTBuilsdPortalCanvas.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        // 注册所有 Cell 节点
+//        MITTBuilsdPortalCanvas.register(MITTBuilsdMatchCardCell.self, forCellWithReuseIdentifier: "MITTBuilsdMatchCardCell")
+//        MITTBuilsdPortalCanvas.register(MITTBuilsdMomentFeedCell.self, forCellWithReuseIdentifier: "Moment")
+//    }
     private func MITTBuilsdInitializeBaseAesthetics() {
         view.backgroundColor = .white
         
@@ -69,8 +69,8 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
         MITTBuilsdPortalCanvas.backgroundColor = .clear
         MITTBuilsdPortalCanvas.delegate = self
         MITTBuilsdPortalCanvas.dataSource = self
-        MITTBuilsdPortalCanvas.register(MITTBuilsdMatchCardCell.self, forCellWithReuseIdentifier: "Match")
-        MITTBuilsdPortalCanvas.register(MITTBuilsdMomentFeedCell.self, forCellWithReuseIdentifier: "Moment")
+        MITTBuilsdPortalCanvas.register(MITTBuilsdMatchCardCell.self, forCellWithReuseIdentifier: "MITTBuilsdMatchCardCell")
+        MITTBuilsdPortalCanvas.register(MITTBuilsdMomentFeedCell.self, forCellWithReuseIdentifier: "MITTBuilsdMomentFeedCell")
         MITTBuilsdPortalCanvas.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdPortalCanvas)
 
@@ -123,11 +123,11 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Match", for: indexPath) as! MITTBuilsdMatchCardCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MITTBuilsdMatchCardCell", for: indexPath) as! MITTBuilsdMatchCardCell
             cell.delegateMITTBuilsd = self
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Moment", for: indexPath) as! MITTBuilsdMomentFeedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MITTBuilsdMomentFeedCell", for: indexPath) as! MITTBuilsdMomentFeedCell
         cell.MITTBuilsdPopulateFakeData(isVideo: MITTBuilsdActiveFeedType == 1, infoData: MITTBuilsdTopActivys[indexPath.row])
         cell.MITTBuilsdcommuti.addTarget(self, action: #selector(MITTBAlert), for: .touchUpInside)
         return cell
@@ -176,7 +176,7 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"qBMinBY/XfCcc5KMnLHpDTAcjExnfoXjw9f7v5eRexnPyFd3")] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
