@@ -12,7 +12,7 @@ class MITTBuilsdMatchPortalController: UIViewController {
     private let MITTBuilsdNebulaBackground = UIImageView(frame: UIScreen.main.bounds)
     lazy var MITTBuilsdNebfilter:  UIButton = {
         let MITTBuilsdcommuti = UIButton.init()
-        MITTBuilsdcommuti.setImage(UIImage.init(named: "MITTBuilsdNebfilter"), for: .normal)
+        MITTBuilsdcommuti.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdNebfilter"), for: .normal)
         MITTBuilsdcommuti.translatesAutoresizingMaskIntoConstraints = false
         return MITTBuilsdcommuti
     }()
@@ -78,7 +78,7 @@ class MITTBuilsdMatchPortalController: UIViewController {
        
         self.title = "Heartbeat Match"
         self.navigationController?.navigationBar.barTintColor = .black
-        MITTBuilsdNebulaBackground.image = UIImage(named: "MITTBuilsdNebulaBackground")
+        MITTBuilsdNebulaBackground.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdNebulaBackground")
       
         view.addSubview(MITTBuilsdNebulaBackground)
         view.addSubview(MITTBuilsdNebfilter)
@@ -95,8 +95,8 @@ class MITTBuilsdMatchPortalController: UIViewController {
         MITTBuilsdNebfilter.addTarget(self, action: #selector(MITTBuilsdTriggerPreferencePanel), for: .touchUpInside)
         
     
-        MITTBuilsdCoinIcon.setBackgroundImage(UIImage.init(named: "mITTBuilsblanbg"), for: .normal)
-        MITTBuilsdCoinIcon.setImage(UIImage.init(named: "BiBiQk"), for: .normal)
+        MITTBuilsdCoinIcon.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsblanbg"), for: .normal)
+        MITTBuilsdCoinIcon.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "BiBiQk"), for: .normal)
         MITTBuilsdCoinIcon.setTitle(" ->", for: .normal)
         MITTBuilsdCoinIcon.setTitleColor(UIColor(red: 0.71, green: 0.38, blue: 0.93, alpha: 1), for: .normal)
         MITTBuilsdCoinIcon.titleLabel?.font = UIFont(name: "Roboto-Black", size: 16)
@@ -104,8 +104,8 @@ class MITTBuilsdMatchPortalController: UIViewController {
     
         
         
-        MITTBuilsdRadialMatchNode.setBackgroundImage(UIImage.init(named: "MITTBuilsdRadialMatchicon"), for: .normal)
-        MITTBuilsdRadialMatchNode.setBackgroundImage(UIImage.init(named: "MITTBuilsdRadialMatchiconcancel"), for: .selected)
+        MITTBuilsdRadialMatchNode.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdRadialMatchicon"), for: .normal)
+        MITTBuilsdRadialMatchNode.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdRadialMatchiconcancel"), for: .selected)
         
         MITTBuilsdRadialMatchNode.addTarget(self, action: #selector(MITTBuilsdToggleSearchAura), for: .touchUpInside)
         
@@ -160,7 +160,7 @@ class MITTBuilsdMatchPortalController: UIViewController {
             let MITTBuilsdAvatarNode = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
             MITTBuilsdAvatarNode.center = CGPoint(x: MITTBuilsdPosX, y: MITTBuilsdPosY + 80)
             MITTBuilsdAvatarNode.layer.cornerRadius = 35
-            MITTBuilsdAvatarNode.image = UIImage(named: MITTBuilsdData)
+            MITTBuilsdAvatarNode.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdData)
             MITTBuilsdAvatarNode.clipsToBounds = true
             MITTBuilsdAvatarNode.layer.borderWidth = 2
             MITTBuilsdAvatarNode.layer.borderColor = UIColor.white.cgColor
@@ -223,7 +223,7 @@ extension MITTBuilsdMatchPortalController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        UIImageView(image: UIImage.init(named: "historyTitle"))
+        UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "historyTitle"))
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MITTBuilsdLogArchives.count
@@ -246,7 +246,7 @@ extension MITTBuilsdMatchPortalController: UITableViewDelegate, UITableViewDataS
         MITTBuilsdCell?.imageView?.layer.masksToBounds = true
 //        MITTBuilsdCell?.imageView?.tintColor = MITTBuilsdThemeViolet
 //        
-        let MITTBuilsdReactionIcon = UIImageView(image: UIImage(named: "heart.fillSuccess"))
+        let MITTBuilsdReactionIcon = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "heart.fillSuccess"))
      
         MITTBuilsdCell?.accessoryView = MITTBuilsdReactionIcon
         
@@ -262,7 +262,7 @@ extension MITTBuilsdMatchPortalController: UITableViewDelegate, UITableViewDataS
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()

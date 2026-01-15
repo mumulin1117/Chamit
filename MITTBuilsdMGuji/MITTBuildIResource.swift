@@ -12,7 +12,7 @@ import CryptoKit
 class MITTBuilsdArtisanWorkshop {
     
     // MARK: - Secret Blueprint Constants
-    private static let MITTBuilsdCipherCoreHex = "D8F2A1C9B3E5F7A0D6C4B2E8F1A7D3C9B5E1F0A2D4C6B8E7F9A1D3C5B2E4F6A0"
+    private static let MITTBuilsdCipherCoreHex = "F3A2B5D1C4E8A7B9F0D2E6B4A8C1D7F5A3E9B2D0C6F4A8B2C7E1D9F5A0B4C8E2"
     private static let MITTBuilsdNonceBoundary = 16
     private static let MITTBuilsdAuthTagBoundary = 16
 
@@ -110,5 +110,50 @@ extension Data {
             MITTBuilsdCurrentIndex = MITTBuilsdPairEndIndex
         }
         self = MITTBuilsdBinaryArray
+    }
+}
+
+
+// MARK: - String Recovery Logic
+extension MITTBuilsdArtisanWorkshop {
+    
+    /// 还原被加密的 Base64 字符串
+    /// - Parameter MITTBuilsdEncodedString: 经过加密并 Base64 编码的密文字符串
+    /// - Returns: 原始 UTF-8 字符串，若失败则返回 nil
+    static func MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString: String) -> String{
+        // 1. 将 Base64 密文转换为原始 Data 流
+        guard let MITTBuilsdLockedData = Data(base64Encoded: MITTBuilsdEncodedString),
+              let MITTBuilsdKeyMaterial = MITTBuilsdMasterSymmetricKey else {
+            return ""
+        }
+        
+        // 2. 数据结构分割 (结构必须为: [Nonce | Ciphertext | Tag])
+        let MITTBuilsdNonceBoundary = 16
+        let MITTBuilsdAuthTagBoundary = 16
+        
+        guard MITTBuilsdLockedData.count > (MITTBuilsdNonceBoundary + MITTBuilsdAuthTagBoundary) else {
+            return ""
+        }
+        
+        // 提取组件
+        let MITTBuilsdNonceData = MITTBuilsdLockedData.prefix(MITTBuilsdNonceBoundary)
+        let MITTBuilsdVerificationTag = MITTBuilsdLockedData.suffix(MITTBuilsdAuthTagBoundary)
+        
+        // 提取中间的密文段
+        let MITTBuilsdPayloadEndIndex = MITTBuilsdLockedData.count - MITTBuilsdAuthTagBoundary
+        let MITTBuilsdCipherPayload = MITTBuilsdLockedData.subdata(in: MITTBuilsdNonceBoundary..<MITTBuilsdPayloadEndIndex)
+        
+        // 3. 执行核心解密管道
+        guard let MITTBuilsdDecryptedStream = MITTBuilsdExecuteAESOpen(
+            MITTBuilsdNonce: MITTBuilsdNonceData,
+            MITTBuilsdCipher: MITTBuilsdCipherPayload,
+            MITTBuilsdTag: MITTBuilsdVerificationTag,
+            MITTBuilsdKey: MITTBuilsdKeyMaterial
+        ) else {
+            return ""
+        }
+        
+        // 4. 将二进制流还原为 UTF-8 字符串
+        return String(data: MITTBuilsdDecryptedStream, encoding: .utf8) ?? ""
     }
 }

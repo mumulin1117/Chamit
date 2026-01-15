@@ -57,7 +57,7 @@ class MITTBuilsdArtPortalController: UIViewController {
     private func MITTBuilsdConstructVisualStage() {
         let MITTBuilsdBackdrop = UIImageView(frame: UIScreen.main.bounds)
         MITTBuilsdBackdrop.contentMode = .scaleAspectFill
-        MITTBuilsdBackdrop.image = UIImage(named: "mITTBuilsdPageone")//MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
+        MITTBuilsdBackdrop.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")//MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         view.addSubview(MITTBuilsdBackdrop)
        
         view.addSubview(MITTBuilsdExhibitDisplay)
@@ -119,13 +119,13 @@ extension MITTBuilsdArtPortalController: WKScriptMessageHandler {
     }
     
     private func MITTBuilsdResetCollectorSession() {
-//        MITTBuilsdVibeRoute.MITTBuilsdSessionToken = nil
+        MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey = nil
         let MITTBuilsdLocalStore = UserDefaults.standard
-        MITTBuilsdLocalStore.set(nil, forKey: "wigCreator")
-        MITTBuilsdLocalStore.set(nil, forKey: "wigPioneer")
-        
+        MITTBuilsdLocalStore.set(nil, forKey: "MITTBuilsdVisualIdentity")
+        let basic  = UINavigationController.init(rootViewController:  MITTBuilsdAuthLandingViewController())
+        basic.navigationBar.isHidden = true
         if let MITTBuilsdRoot = ((UIApplication.shared.delegate) as? AppDelegate)?.window {
-            MITTBuilsdRoot.rootViewController = MITTBuilsdAuthLandingViewController()
+            MITTBuilsdRoot.rootViewController = basic
         }
     }
 }

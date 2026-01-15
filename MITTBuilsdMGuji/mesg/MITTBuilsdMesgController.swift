@@ -13,18 +13,18 @@ class MITTBuilsdMesgController: UIViewController {
      var MITTBuilsdTopActivys:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
    
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
-    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChmesg") )
+    private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdChmesg") )
 
     private lazy var MITTBuilsdheart: UIButton = {
         let chdert = UIButton.init()
-        chdert.setBackgroundImage(UIImage.init(named: "MITTBuilsdheardtbeat"), for: .normal)
+        chdert.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdheardtbeat"), for: .normal)
         chdert.addTarget(self, action: #selector(MITTBuilsdbeginmat), for: .touchUpInside)
         chdert.translatesAutoresizingMaskIntoConstraints = false
         return chdert
     }()
     
     private lazy var MITTBuilsdMesgholderimg: UIImageView = {
-        let quickImg = UIImageView.init(image: UIImage.init(named: "updatenodata"))
+        let quickImg = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "updatenodata"))
         quickImg.contentMode = .scaleAspectFit
         quickImg.translatesAutoresizingMaskIntoConstraints = false
         return quickImg
@@ -35,7 +35,7 @@ class MITTBuilsdMesgController: UIViewController {
        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
       
     }
-    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
+    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class MITTBuilsdMesgController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        MITTBuilsdHeroCanvasView.image = UIImage(named: "mITTBuilsdPageone")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
    
         view.addSubview(MITTBuilsdHeroCanvasView)
@@ -161,7 +161,7 @@ extension MITTBuilsdMesgController: UICollectionViewDataSource, UICollectionView
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()

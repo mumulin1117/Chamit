@@ -29,9 +29,9 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
     private var MITTBuilsdHeroTotalCount: Int = 3 // 对应 Section 0 的 item 数量
     
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
-    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdChamit") )
+    private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdChamit") )
     private let MITTBuilsdActionHubTrigger = UIButton(type: .system)
-    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
+    private let MITTBuilsdAvatarThumbnail = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdMainScrollCanvas: UICollectionView!
    
@@ -58,7 +58,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        MITTBuilsdHeroCanvasView.image = UIImage(named: "mITTBuilsdPageone")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
    
         view.addSubview(MITTBuilsdHeroCanvasView)
@@ -80,7 +80,7 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         view.addSubview(MITTBuilsdBrandHeader)
       
        
-        MITTBuilsdActionHubTrigger.setImage(UIImage(named: "mITTBuilsdPageAdd"), for: .normal)
+        MITTBuilsdActionHubTrigger.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageAdd"), for: .normal)
         MITTBuilsdActionHubTrigger.addTarget(self, action: #selector(MITTBuilsdActionHubTriggeraction), for: .touchUpInside)
         MITTBuilsdActionHubTrigger.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdActionHubTrigger.translatesAutoresizingMaskIntoConstraints = false
@@ -304,7 +304,7 @@ extension MITTBuilsdDiscoveryFeedController {
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
@@ -350,7 +350,7 @@ extension MITTBuilsdDiscoveryFeedController {
     
     private func MITTBuilsdOrganizeData(from andu: [String: Any]?) {
         guard let MITTBuilsdResponse = andu,
-              let MITTBuilsdRawList = MITTBuilsdResponse["data"] as? [[String: Any]] else { return }
+              let MITTBuilsdRawList = MITTBuilsdResponse[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? [[String: Any]] else { return }
         
         // 清空旧数据
         var MITTBuilsdTempMap: [String: [[String: Any]]] = [:]

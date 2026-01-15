@@ -17,6 +17,7 @@ class MITTBuilsdmesgcell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        MITTBuilsdPosterBoard.contentMode = .scaleAspectFill
         MITTBuilsdPosterBoard.backgroundColor = .systemGray6
         MITTBuilsdPosterBoard.layer.cornerRadius = 24
         MITTBuilsdPosterBoard.clipsToBounds = true
@@ -25,18 +26,22 @@ class MITTBuilsdmesgcell: UICollectionViewCell {
         
         
         MITTBuilsdTopicHeadline.font = .systemFont(ofSize: 14, weight: .medium)
-        MITTBuilsdTopicHeadline.textColor = UIColor(red: 0.98, green: 0.37, blue: 0.55, alpha: 1)
+        
         MITTBuilsdTopicHeadline.numberOfLines = 1
         MITTBuilsdTopicHeadline.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdTopicHeadline)
         contentView.addSubview(MITTBuilsdcontentHeadline)
          
+        
+        MITTBuilsdTopicHeadline.textColor = UIColor(red: 0.19, green: 0.19, blue: 0.19, alpha: 1)
+        MITTBuilsdcontentHeadline.textColor = UIColor(red: 0.98, green: 0.37, blue: 0.55, alpha: 1)
+        MITTBuilsdcontentHeadline.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
            
-            MITTBuilsdPosterBoard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            MITTBuilsdPosterBoard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10),
             MITTBuilsdPosterBoard.widthAnchor.constraint(equalToConstant: 48),
             
-            MITTBuilsdPosterBoard.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            MITTBuilsdPosterBoard.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10),
             MITTBuilsdPosterBoard.heightAnchor.constraint(equalToConstant: 48),
             
             MITTBuilsdTopicHeadline.leadingAnchor.constraint(equalTo: MITTBuilsdPosterBoard.trailingAnchor,constant: 13),

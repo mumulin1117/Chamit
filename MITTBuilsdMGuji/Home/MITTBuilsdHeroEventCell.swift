@@ -41,12 +41,12 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
         
         // 1. Background
         MITTBuilsdBackdropCanvas.contentMode = .scaleAspectFill
-        MITTBuilsdBackdropCanvas.image = UIImage(named: "MITTBuilsdHeroSample") // 替换为你的图5素材
+        MITTBuilsdBackdropCanvas.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdHeroSample") // 替换为你的图5素材
         MITTBuilsdBackdropCanvas.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdBackdropCanvas)
         
         // 2. Headline
-        MITTBuilsdTopicHeadline.text = "Find wake surf ride partners"
+//        MITTBuilsdTopicHeadline.text = "Find wake surf ride partners"
         MITTBuilsdTopicHeadline.font = .systemFont(ofSize: 22, weight: .bold)
         MITTBuilsdTopicHeadline.textColor = .white
         MITTBuilsdTopicHeadline.numberOfLines = 2
@@ -83,7 +83,7 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
         MITTBuilsdQuotaStatusLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdQuotaStatusLabel)
         
-        MITTBuilsdEnlistActionTrigger.setTitle("Join", for: .normal)
+        MITTBuilsdEnlistActionTrigger.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Join", for: .normal)
         MITTBuilsdEnlistActionTrigger.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
         MITTBuilsdEnlistActionTrigger.backgroundColor = UIColor(red: 0.63, green: 0.47, blue: 0.94, alpha: 1.0)
         MITTBuilsdEnlistActionTrigger.layer.cornerRadius = 18

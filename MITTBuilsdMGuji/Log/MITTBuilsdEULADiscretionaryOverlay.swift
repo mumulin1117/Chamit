@@ -63,13 +63,13 @@ class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
         MITTBuilsdContentSheet.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdContentSheet)
         
-        MITTBuilsdHeaderImage.image = UIImage(named: "MITTBuilsdEULAHeader")
+        MITTBuilsdHeaderImage.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdEULAHeader")
         MITTBuilsdHeaderImage.contentMode = .scaleAspectFill
         MITTBuilsdHeaderImage.clipsToBounds = true
         MITTBuilsdHeaderImage.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdContentSheet.addSubview(MITTBuilsdHeaderImage)
         
-        MITTBuilsdIdentityLabel.text = "EULA"
+        MITTBuilsdIdentityLabel.text = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"EULA"
         MITTBuilsdIdentityLabel.font = .systemFont(ofSize: 22, weight: .black)
         MITTBuilsdIdentityLabel.textColor = .black
         MITTBuilsdIdentityLabel.textAlignment = .center
@@ -86,7 +86,7 @@ class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
         MITTBuilsdDocumentBody.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdScrollSurface.addSubview(MITTBuilsdDocumentBody)
         
-        MITTBuilsdDeclineTrigger.setTitle("Cancel", for: .normal)
+        MITTBuilsdDeclineTrigger.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Cancel", for: .normal)
         MITTBuilsdDeclineTrigger.setTitleColor(.gray, for: .normal)
         MITTBuilsdDeclineTrigger.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         MITTBuilsdDeclineTrigger.layer.cornerRadius = 12
@@ -94,7 +94,7 @@ class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
         MITTBuilsdDeclineTrigger.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdContentSheet.addSubview(MITTBuilsdDeclineTrigger)
         
-        MITTBuilsdAcceptanceTrigger.setTitle("Agree", for: .normal)
+        MITTBuilsdAcceptanceTrigger.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Agree", for: .normal)
         MITTBuilsdAcceptanceTrigger.setTitleColor(.white, for: .normal)
         MITTBuilsdAcceptanceTrigger.backgroundColor = UIColor(red: 0.63, green: 0.47, blue: 0.94, alpha: 1.0)
         MITTBuilsdAcceptanceTrigger.layer.cornerRadius = 12

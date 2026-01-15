@@ -9,7 +9,7 @@ import UIKit
 
 class MITTBuilsdCollectorProfileontroller: UIViewController {
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
-    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdProfile") )
+    private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdProfile") )
     
 
   
@@ -31,7 +31,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
    
     private var MITTBuilsdCurrentFocusType: Int = 0
     private lazy var MITTBuilsdMesgholderimg: UIImageView = {
-        let quickImg = UIImageView.init(image: UIImage.init(named: "updatenodata"))
+        let quickImg = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "updatenodata"))
         quickImg.contentMode = .scaleAspectFit
         quickImg.translatesAutoresizingMaskIntoConstraints = false
         return quickImg
@@ -43,7 +43,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         MITTBuilsdMasterAvatar.contentMode = .scaleAspectFill
         MITTBuilsdMasterAvatar.layer.cornerRadius = 50
         MITTBuilsdMasterAvatar.layer.masksToBounds = true
-        MITTBuilsdHeroCanvasView.image = UIImage(named: "mITTBuilsdPageone")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
    
         view.addSubview(MITTBuilsdHeroCanvasView)
@@ -97,14 +97,14 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
     
     private func MITTBuilsdAssembleStructureNodes() {
          //coin
-        MITTBuilsdCoinIcon.setBackgroundImage(UIImage.init(named: "mITTBuilsblanbg"), for: .normal)
-        MITTBuilsdCoinIcon.setImage(UIImage.init(named: "BiBiQk"), for: .normal)
+        MITTBuilsdCoinIcon.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsblanbg"), for: .normal)
+        MITTBuilsdCoinIcon.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "BiBiQk"), for: .normal)
         MITTBuilsdCoinIcon.setTitle(" ->", for: .normal)
         MITTBuilsdCoinIcon.setTitleColor(UIColor(red: 0.71, green: 0.38, blue: 0.93, alpha: 1), for: .normal)
         MITTBuilsdCoinIcon.titleLabel?.font = UIFont(name: "Roboto-Black", size: 16)
         MITTBuilsdCoinIcon.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
         //set
-        MITTBuilsdGearTrigger.setImage(UIImage(named: "mITTBuilssite"), for: .normal)
+        MITTBuilsdGearTrigger.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilssite"), for: .normal)
         MITTBuilsdGearTrigger.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
         
         // 2. Identity Card
@@ -115,7 +115,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         MITTBuilsdMasterAvatar.layer.cornerRadius = 50
         MITTBuilsdMasterAvatar.clipsToBounds = true
       
-        MITTBuilsdEditBadge.setImage(UIImage.init(named: "mITTBuilsedit"), for: .normal)
+        MITTBuilsdEditBadge.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsedit"), for: .normal)
         MITTBuilsdEditBadge.addTarget(self, action: #selector(MITTBuilsdAssemblenet(UIbus:)), for: .touchUpInside)
        
 //        MITTBuilsdNameAgeLabel.text = "Anna | 26"
@@ -128,9 +128,9 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
         MITTBuilsdStatsHub.axis = .horizontal
         MITTBuilsdStatsHub.distribution = .fillEqually
         
-        let follow = MITTBuilsdCreateStatUnit(value: "0", title: "Following", labelOndex: 44)
+        let follow = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Following", labelOndex: 44)
         follow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
-        let face = MITTBuilsdCreateStatUnit(value: "0", title: "Followers", labelOndex: 444)
+        let face = MITTBuilsdCreateStatUnit(value: "0", title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Followers", labelOndex: 444)
         face.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MITTBuilsdAtapRealtionssemblenet(UIbus:))))
         MITTBuilsdStatsHub.addArrangedSubview(follow)
         MITTBuilsdStatsHub.addArrangedSubview(face)
@@ -292,7 +292,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Dictionary<String,Any>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Dictionary<String,Any>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()

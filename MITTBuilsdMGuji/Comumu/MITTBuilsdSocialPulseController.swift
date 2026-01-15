@@ -18,9 +18,9 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
     }
     
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
-    private let MITTBuilsdBrandHeader = UIImageView(image: UIImage.init(named: "MITTBuilsdcommu") )
+    private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdcommu") )
     
-    private let MITTBuilsdAvatarLead = UIImageView.init(image: UIImage.init(named: "LightMITTBuilsdlogo"))
+    private let MITTBuilsdAvatarLead = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "LightMITTBuilsdlogo"))
     
     private var MITTBuilsdPortalCanvas: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -36,7 +36,7 @@ class MITTBuilsdSocialPulseController: UIViewController, MITTBuilsdMatchCardCell
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MITTBuilsdHeroCanvasView.image = UIImage(named: "mITTBuilsdPageone")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "mITTBuilsdPageone")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
    
         view.addSubview(MITTBuilsdHeroCanvasView)
@@ -173,9 +173,10 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
         MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/hmbrvmcxz/yfmqdoyxig", MITTBuilsdParams: ["MITTBuilsdExhibitionPiece":"87531697","MITTBuilsdDioramaBase":1,"MITTBuilsdModularStage":20]) {  andu in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
             
+            
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Array<Dictionary<String,Any>>
                     
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()

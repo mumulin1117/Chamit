@@ -97,7 +97,7 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
     private func MITTBuilsdAssembleSculptedInterface() {
         view.backgroundColor = .white
         
-        MITTBuilsdCreativeBackdrop.image = UIImage(named: "MITTBuilsdLoginemailbg")
+        MITTBuilsdCreativeBackdrop.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdLoginemailbg")
         MITTBuilsdCreativeBackdrop.contentMode = .scaleAspectFill
         MITTBuilsdCreativeBackdrop.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdCreativeBackdrop)
@@ -105,7 +105,7 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
         MITTBuilsdReturnNavigator.backgroundColor = .white
         MITTBuilsdReturnNavigator.layer.cornerRadius = 12
         let MITTBuilsdChevronConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
-        MITTBuilsdReturnNavigator.setImage(UIImage(named: "MITTBuilsdchevron.left"), for: .normal)
+        MITTBuilsdReturnNavigator.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdchevron.left"), for: .normal)
         MITTBuilsdReturnNavigator.tintColor = MITTBuilsdThemeAccentViolet
         MITTBuilsdReturnNavigator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdReturnNavigator)
@@ -121,8 +121,8 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             container: MITTBuilsdEmailFieldContainer,
             icon: MITTBuilsdEmailIconNode,
             input: MITTBuilsdEmailInputSurface,
-            title: "Email",
-            placeholder: "Enter your email",
+            title: "MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")Email",
+            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Enter your email",
             symbol: "envelope.fill"
         )
         
@@ -131,13 +131,13 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             container: MITTBuilsdSecretFieldContainer,
             icon: MITTBuilsdSecretIconNode,
             input: MITTBuilsdSecretInputSurface,
-            title: "Password",
-            placeholder: "Enter password",
+            title: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Password",
+            placeholder: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Enter password",
             symbol: "lock.fill"
         )
         MITTBuilsdSecretInputSurface.isSecureTextEntry = true
         
-        MITTBuilsdFinalizeAuthTrigger.setBackgroundImage(UIImage.init(named: "MITTBuilsdlogbg"), for: .normal)
+        MITTBuilsdFinalizeAuthTrigger.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdlogbg"), for: .normal)
         MITTBuilsdFinalizeAuthTrigger.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdInputCanvasSheet.addSubview(MITTBuilsdFinalizeAuthTrigger)
     }
@@ -237,7 +237,7 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
         guard let MITTBuilsdTargetEmail = MITTBuilsdEmailInputSurface.text, !MITTBuilsdTargetEmail.isEmpty,
               let MITTBuilsdTargetKey = MITTBuilsdSecretInputSurface.text, !MITTBuilsdTargetKey.isEmpty else {
             MITTBuilsdVibrateInterfaceFailure()
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Email and password can not be empty!")
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Email and password can not be empty!")
            
             return
         }
@@ -249,10 +249,10 @@ class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFieldDele
             
             guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
                  
-                  let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Dictionary<String,Any>
+                  let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"data"] as? Dictionary<String,Any>
                     
             else {
-                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Email and password error!")
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Email and password error!")
                
                 return
             }

@@ -34,7 +34,7 @@ class MITTBuilsdMatchCardCell: UICollectionViewCell {
         MITTBuilsdVideoSwitch.backgroundColor = UIColor(red: 248/255, green: 236/255, blue: 254/255, alpha: 1)
         MITTBuilsdVideoSwitch.setTitleColor(UIColor(red: 0.71, green: 0.37, blue: 0.98, alpha: 1), for: .normal)
         
-        MITTBuilsdOuterLayer.image = UIImage(named: "MITTBuilsdcommuToV")
+        MITTBuilsdOuterLayer.image =  MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdcommuToV")
         MITTBuilsdOuterLayer.contentMode = .scaleToFill
         MITTBuilsdOuterLayer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdOuterLayer)
@@ -54,8 +54,8 @@ class MITTBuilsdMatchCardCell: UICollectionViewCell {
         ])
     }
     private func MITTBuilsdSetupSegmentNodes() {
-        MITTBuilsdMomentSwitch.setTitle("Moment", for: .normal)
-        MITTBuilsdVideoSwitch.setTitle("Video", for: .normal)
+        MITTBuilsdMomentSwitch.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"1/0mWzIE7nL7K1dvNfJt8aq5zjVRf3ETwAw6YFRgTSMx1XsdOfY="), for: .normal)
+        MITTBuilsdVideoSwitch.setTitle(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Video", for: .normal)
         
         [MITTBuilsdMomentSwitch, MITTBuilsdVideoSwitch].forEach {
             $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)

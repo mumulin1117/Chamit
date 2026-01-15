@@ -9,7 +9,7 @@ import UIKit
 class MITTBuilsdMomentFeedCell: UICollectionViewCell {
     private let MITTBuilsdPosterBoard = UIImageView()
     private let MITTBuilsdAuthorAvatar = UIImageView()
-    private let MITTBuilsdCenterPlay = UIImageView.init(image: UIImage.init(named: "MITTBuilsdreowenr"))
+    private let MITTBuilsdCenterPlay = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdreowenr"))
     
     private let MITTBuilsdDescriptionNode = UILabel()
     private let MITTBuilsdSideActionPanel = UIStackView()
@@ -20,7 +20,7 @@ class MITTBuilsdMomentFeedCell: UICollectionViewCell {
     
     lazy var MITTBuilsdcommuti: UIButton = {
         let MITTBuilsdcommuti = UIButton.init()
-        MITTBuilsdcommuti.setImage(UIImage.init(named: "MITTBuilsdcoalert"), for: .normal)
+        MITTBuilsdcommuti.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdcoalert"), for: .normal)
         MITTBuilsdcommuti.translatesAutoresizingMaskIntoConstraints = false
         return MITTBuilsdcommuti
     }()

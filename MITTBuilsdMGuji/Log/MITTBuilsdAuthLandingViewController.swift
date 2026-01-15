@@ -30,23 +30,23 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     private func MITTBuilsdInitializeCoreInterface() {
         view.backgroundColor = .black
         
-        MITTBuilsdHeroCanvasView.image = UIImage(named: "MITTBuilsdLoginHero")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdLoginHero")
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
         MITTBuilsdHeroCanvasView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdHeroCanvasView)
 
-        MITTBuilsdEULADirectAccessLink.setBackgroundImage(UIImage.init(named: "MITTBuilsdEULA"), for: .normal)
+        MITTBuilsdEULADirectAccessLink.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdEULA"), for: .normal)
         MITTBuilsdEULADirectAccessLink.addTarget(self, action: #selector(MITTBuilsdRouteToEULADisplay), for: .touchUpInside)
         MITTBuilsdEULADirectAccessLink.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdEULADirectAccessLink)
 
-        MITTBuilsdEntryActionTrigger.setBackgroundImage(UIImage.init(named: "MITTBuilsdlogbg"), for: .normal)
+        MITTBuilsdEntryActionTrigger.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdlogbg"), for: .normal)
         MITTBuilsdEntryActionTrigger.addTarget(self, action: #selector(MITTBuilsdExecuteSessionIgnition), for: .touchUpInside)
         MITTBuilsdEntryActionTrigger.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdEntryActionTrigger)
 
-        MITTBuilsdComplianceToggle.setImage(UIImage(named: "MITTBuilsdunsel"), for: .normal)
-        MITTBuilsdComplianceToggle.setImage(UIImage(named: "MITTBuilsdun"), for: .selected)
+        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdunsel"), for: .normal)
+        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdun"), for: .selected)
         MITTBuilsdComplianceToggle.tintColor = .white
         MITTBuilsdComplianceToggle.addTarget(self, action: #selector(MITTBuilsdUpdateComplianceState), for: .touchUpInside)
         MITTBuilsdComplianceToggle.translatesAutoresizingMaskIntoConstraints = false
@@ -68,15 +68,15 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
             .foregroundColor: MITTBuilsdInactiveShadeColor
         ]
         
-        let MITTBuilsdAttributedPrompt = NSMutableAttributedString(string: "By continuing you agree to our <Terms of Service> and <Privacy Policy>.", attributes: MITTBuilsdBaseAttributes)
+        let MITTBuilsdAttributedPrompt = NSMutableAttributedString(string: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString: "UplMczTGmhr3NW+HKx/rRUqt7FRCKEGVVKx+6ac6JirxONjtZzaWKwVf8aKCwT9IcWdQczU3nymb1EYnH1WHGwqidjoaL1cl/SPxmw0MzoiUxvD9in7aHZVRv/wWTsStjR6N0Dnk9Q==") , attributes: MITTBuilsdBaseAttributes)
         
         let MITTBuilsdLinkAttribute: [NSAttributedString.Key: Any] = [
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .foregroundColor: UIColor.white
         ]
         
-        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: "<Terms of Service>"))
-        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: "<Privacy Policy>"))
+        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Terms of Service>"))
+        MITTBuilsdAttributedPrompt.addAttributes(MITTBuilsdLinkAttribute, range: (MITTBuilsdAttributedPrompt.string as NSString).range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Privacy Policy>"))
         
         MITTBuilsdLegalRichTextAnchor.attributedText = MITTBuilsdAttributedPrompt
         MITTBuilsdLegalRichTextAnchor.backgroundColor = .clear
@@ -132,7 +132,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
     @objc private func MITTBuilsdExecuteSessionIgnition() {
         guard MITTBuilsdIsComplianceVerified else {
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure("Please agree to our terms of service at first!")
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Please agree to our terms of service at first!")
             
             return
         }
@@ -151,7 +151,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
         let MITTBuilsdCharacterIndex = MITTBuilsdLegalRichTextAnchor.layoutManager.characterIndex(for: MITTBuilsdTapLocation, in: MITTBuilsdLegalRichTextAnchor.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         
         let MITTBuilsdFullString = MITTBuilsdLegalRichTextAnchor.text ?? ""
-        if let MITTBuilsdTermsRange = MITTBuilsdFullString.range(of: "<Terms of Service>") {
+        if let MITTBuilsdTermsRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Terms of Service>") {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdTermsRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
                 let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdLegalPolicy.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
@@ -160,7 +160,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
             }
         }
         
-        if let MITTBuilsdPrivacyRange = MITTBuilsdFullString.range(of: "<Privacy Policy>") {
+        if let MITTBuilsdPrivacyRange = MITTBuilsdFullString.range(of: MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"<Privacy Policy>") {
             let MITTBuilsdNsRange = NSRange(MITTBuilsdPrivacyRange, in: MITTBuilsdFullString)
             if NSLocationInRange(MITTBuilsdCharacterIndex, MITTBuilsdNsRange) {
                 let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdWhisperPortal.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: ""))
@@ -178,7 +178,7 @@ extension UITextField {
         MITTBuilsdBlueprintToolbar.sizeToFit()
         
         let MITTBuilsdVoidSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let MITTBuilsdArtifactLabel = "Done"
+        let MITTBuilsdArtifactLabel = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"")"Done"
         
         let MITTBuilsdExecutionUnit = { (MITTBuilsdFactor: CGFloat) -> CGFloat in
             return MITTBuilsdFactor * MITTBuilsdExhibitionScale
