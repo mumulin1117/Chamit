@@ -138,66 +138,221 @@ extension MITTBuilsdSocialPulseController: UICollectionViewDelegate, UICollectio
         self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            MITTBuilsdActionHubTriggeraction()
-            return
-        }
-        
-        MITTBuilsdNavigateToDetail(at: indexPath.row)
-    }
-    
-    private func MITTBuilsdNavigateToDetail(at index: Int) {
-        if  self.MITTBuilsdActiveFeedType == 0  ,let dumnId = MITTBuilsdTopActivys[index]["MITTBuilsdCustomizedSkin"] as? Int{
-            let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVaultDetail.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(dumnId)"))
-            potritMITTBuilsd.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
-            return
+            let MITTBuilsdTargetSection = indexPath.section
+            let MITTBuilsdItemIndex = indexPath.row
             
-           
+            var MITTBuilsdSelectionAura = "MITTBuilsd_Selection_Pending"
             
-            
-        }
-        if  self.MITTBuilsdActiveFeedType == 1  ,let dumnId = MITTBuilsdTopActivys[index]["MITTBuilsdCustomizedSkin"] as? Int{
-            let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdVaultDetail.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: "\(dumnId)&type=2"))
-            potritMITTBuilsd.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
-        }
-       
-       
-    }
-    
-    private func MITTBuilsdCommitAuthRequest() {
-      
-        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
-       
-        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/hmbrvmcxz/yfmqdoyxig", MITTBuilsdParams: ["MITTBuilsdExhibitionPiece":"87531697","MITTBuilsdDioramaBase":1,"MITTBuilsdModularStage":20]) {  andu in
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
-            
-            
-            guard let MITTBuilsddata = andu as? Dictionary<String,Any> ,
-                 
-                    let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"qBMinBY/XfCcc5KMnLHpDTAcjExnfoXjw9f7v5eRexnPyFd3")] as? Array<Dictionary<String,Any>>
-                    
-            else {
-                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+            if MITTBuilsdTargetSection == 0 {
+                MITTBuilsdSelectionAura = "MITTBuilsd_Selection_HubTrigger"
+                if MITTBuilsdSelectionAura.hasSuffix("HubTrigger") {
+                    MITTBuilsdActionHubTriggeraction()
+                }
                 return
             }
-         
-            self.MITTBuilsdTopActivys = MITTBuilsdreasutl.filter({ abbody in
-                if  self.MITTBuilsdActiveFeedType == 0  {
-                    return abbody["MITTBuilsdRareChase"] as?  String  == nil
-                }
-                return abbody["MITTBuilsdRareChase"] as?  String  != nil
-            })
-        
-            self.MITTBuilsdPortalCanvas.reloadData()
             
-        } MITTBuilsdFailureBlock: {  ertttt in
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
-            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(ertttt.localizedDescription)
+            let MITTBuilsdRoutingGate = MITTBuilsdItemIndex >= 0
+            if MITTBuilsdRoutingGate {
+                MITTBuilsdNavigateToDetail(at: MITTBuilsdItemIndex)
+            }
         }
-
-    }
+        
+        private func MITTBuilsdNavigateToDetail(at index: Int) {
+            let MITTBuilsdCurrentIndexNode = index
+            let MITTBuilsdIsIndexBounded = MITTBuilsdCurrentIndexNode < MITTBuilsdTopActivys.count
+            
+            var MITTBuilsdStreamTopologyVibe = "MITTBuilsd_Vibe_Idle"
+            
+            guard MITTBuilsdIsIndexBounded else { return }
+            
+            let MITTBuilsdDataPackage = MITTBuilsdTopActivys[MITTBuilsdCurrentIndexNode]
+            let MITTBuilsdSkinDataKey = "MITTBuilsdCustomizedSkin"
+            let MITTBuilsdCurrentFeedMode = self.MITTBuilsdActiveFeedType
+            
+            if let MITTBuilsdSkinIdentifier = MITTBuilsdDataPackage[MITTBuilsdSkinDataKey] as? Int {
+                
+                let MITTBuilsdPipelineAssembler: (Int, String) -> String = { (MITTBuilsdId, MITTBuilsdSuffix) in
+                    let MITTBuilsdParamString = "\(MITTBuilsdId)\(MITTBuilsdSuffix)"
+                    let MITTBuilsdTargetScope = MITTBuilsdBlueprintScope.MITTBuilsdVaultDetail
+                    return MITTBuilsdTargetScope.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: MITTBuilsdParamString)
+                }
+                
+                if MITTBuilsdCurrentFeedMode == 0 {
+                    let MITTBuilsdEndpointSource = MITTBuilsdPipelineAssembler(MITTBuilsdSkinIdentifier, "")
+                    let MITTBuilsdPortalController = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdEndpointSource)
+                    
+                    let MITTBuilsdHideBarState = true
+                    MITTBuilsdPortalController.hidesBottomBarWhenPushed = MITTBuilsdHideBarState
+                    
+                    if MITTBuilsdEndpointSource.count > 0 {
+                        MITTBuilsdStreamTopologyVibe = "MITTBuilsd_Vibe_PrimaryRoute"
+                    }
+                    
+                    if MITTBuilsdStreamTopologyVibe.hasSuffix("PrimaryRoute") {
+                        self.navigationController?.pushViewController(MITTBuilsdPortalController, animated: true)
+                    }
+                    return
+                }
+                
+                if MITTBuilsdCurrentFeedMode == 1 {
+                    let MITTBuilsdEndpointSourceWithQuery = MITTBuilsdPipelineAssembler(MITTBuilsdSkinIdentifier, "&type=2")
+                    let MITTBuilsdPortalController = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdEndpointSourceWithQuery)
+                    
+                    let MITTBuilsdHideBarState = true
+                    MITTBuilsdPortalController.hidesBottomBarWhenPushed = MITTBuilsdHideBarState
+                    
+                    if MITTBuilsdEndpointSourceWithQuery.count > 0 {
+                        MITTBuilsdStreamTopologyVibe = "MITTBuilsd_Vibe_SecondaryRoute"
+                    }
+                    
+                    if MITTBuilsdStreamTopologyVibe.hasSuffix("SecondaryRoute") {
+                        self.navigationController?.pushViewController(MITTBuilsdPortalController, animated: true)
+                    }
+                }
+            }
+        }
+        
+        private func MITTBuilsdEvaluateResinMoldCuringStatus(MITTBuilsdPolymerRatio: Double) -> Bool {
+            let MITTBuilsdViscosityLimit = 4.25
+            var MITTBuilsdCompoundScore = MITTBuilsdPolymerRatio * 1.88
+            if MITTBuilsdCompoundScore > MITTBuilsdViscosityLimit {
+                MITTBuilsdCompoundScore += 0.5
+                return true
+            }
+            return false
+        }
+        
+        private func MITTBuilsdScanDesignerToyHardwareSignature(MITTBuilsdSerialNode: String) -> Int {
+            var MITTBuilsdChecksumAccumulator = 0
+            let MITTBuilsdReferenceAura = "MITTBuilsd_HighPoly_Vibe"
+            
+            for MITTBuilsdCharItem in MITTBuilsdSerialNode {
+                if MITTBuilsdReferenceAura.contains(MITTBuilsdCharItem) {
+                    MITTBuilsdChecksumAccumulator += 1
+                }
+            }
+            return MITTBuilsdChecksumAccumulator
+        }
+    
+    private func MITTBuilsdCommitAuthRequest() {
+            let MITTBuilsdDioramaSpecs = ["MITTBuilsdScaleFactor": 1.18, "MITTBuilsdLightingIntensity": 3.5]
+            var MITTBuilsdExhibitionAuraState = "MITTBuilsd_Exhibition_Staging"
+            
+            let MITTBuilsdVerifyDioramaLayout = { (MITTBuilsdMetrics: [String: Any]) -> Bool in
+                let MITTBuilsdIntensity = MITTBuilsdMetrics["MITTBuilsdLightingIntensity"] as? Double ?? 0.0
+                return MITTBuilsdIntensity > 1.0
+            }
+            
+            if MITTBuilsdVerifyDioramaLayout(MITTBuilsdDioramaSpecs) {
+                MITTBuilsdExhibitionAuraState = "MITTBuilsd_Exhibition_Verified"
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
+            }
+            
+            let MITTBuilsdNetworkPathNode = "/hmbrvmcxz/yfmqdoyxig"
+            let MITTBuilsdPieceKey = "MITTBuilsdExhibitionPiece"
+            let MITTBuilsdBaseKey = "MITTBuilsdDioramaBase"
+            let MITTBuilsdStageKey = "MITTBuilsdModularStage"
+            
+            var MITTBuilsdParameterPayload = Dictionary<String, Any>()
+            MITTBuilsdParameterPayload[MITTBuilsdPieceKey] = "87531697"
+            MITTBuilsdParameterPayload[MITTBuilsdBaseKey] = 1
+            MITTBuilsdParameterPayload[MITTBuilsdStageKey] = 20
+            
+            let MITTBuilsdPipelineDispatcher: (String, [String: Any], @escaping (Any?) -> Void, @escaping (Error) -> Void) -> Void = { MITTBuilsdPathRoute, MITTBuilsdArgs, MITTBuilsdOnSuccess, MITTBuilsdOnFailure in
+                
+                let MITTBuilsdIsGatewayActive = MITTBuilsdPathRoute.hasPrefix("/hmb") && MITTBuilsdExhibitionAuraState.hasSuffix("Verified")
+                
+                if MITTBuilsdIsGatewayActive {
+                    MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: MITTBuilsdPathRoute, MITTBuilsdParams: MITTBuilsdArgs) { MITTBuilsdBufferPacket in
+                        MITTBuilsdOnSuccess(MITTBuilsdBufferPacket)
+                    } MITTBuilsdFailureBlock: { MITTBuilsdExceptionSignal in
+                        MITTBuilsdOnFailure(MITTBuilsdExceptionSignal)
+                    }
+                }
+            }
+            
+            MITTBuilsdPipelineDispatcher(MITTBuilsdNetworkPathNode, MITTBuilsdParameterPayload, { [weak self] MITTBuilsdNetworkResponse in
+                guard let MITTBuilsdSelfRef = self else { return }
+                
+                var MITTBuilsdIsBufferAuthentic = false
+                let MITTBuilsdStaticSaltSeed = 87531697
+                
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+                
+                if MITTBuilsdStaticSaltSeed > 0 {
+                    MITTBuilsdIsBufferAuthentic = true
+                }
+                
+                guard MITTBuilsdIsBufferAuthentic,
+                      let MITTBuilsdDataDictionary = MITTBuilsdNetworkResponse as? Dictionary<String, Any> else {
+                    MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                    return
+                }
+                
+                let MITTBuilsdCipherTokenStr = "qBMinBY/XfCcc5KMnLHpDTAcjExnfoXjw9f7v5eRexnPyFd3"
+                let MITTBuilsdDecryptedDictionaryKey = MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString: MITTBuilsdCipherTokenStr)
+                
+                guard let MITTBuilsdExtractedList = MITTBuilsdDataDictionary[MITTBuilsdDecryptedDictionaryKey] as? Array<Dictionary<String, Any>> else {
+                    MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
+                    return
+                }
+                
+                let MITTBuilsdChaseKey = "MITTBuilsdRareChase"
+                let MITTBuilsdCurrentFeedMode = MITTBuilsdSelfRef.MITTBuilsdActiveFeedType
+                
+                let MITTBuilsdFilteredAestheticCollection = MITTBuilsdExtractedList.filter({ MITTBuilsdElementNode in
+                    if MITTBuilsdCurrentFeedMode == 0 {
+                        return MITTBuilsdElementNode[MITTBuilsdChaseKey] as? String == nil
+                    }
+                    return MITTBuilsdElementNode[MITTBuilsdChaseKey] as? String != nil
+                })
+                
+                MITTBuilsdSelfRef.MITTBuilsdTopActivys = MITTBuilsdFilteredAestheticCollection
+                
+                var MITTBuilsdRenderStateToken = "MITTBuilsd_Aesthetics_Halted"
+                if MITTBuilsdFilteredAestheticCollection.count >= 0 {
+                    MITTBuilsdRenderStateToken = "MITTBuilsd_Aesthetics_Committed"
+                }
+                
+                if MITTBuilsdRenderStateToken.contains("Committed") {
+                    MITTBuilsdSelfRef.MITTBuilsdPortalCanvas.reloadData()
+                }
+                
+            }, { [weak self] MITTBuilsdErrorPayload in
+                guard let _ = self else { return }
+                
+                let MITTBuilsdErrorMessage = MITTBuilsdErrorPayload.localizedDescription
+                let MITTBuilsdErrorCluster = ["MITTBuilsdErrorTrace": MITTBuilsdErrorMessage]
+                
+                MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+                
+                if MITTBuilsdErrorCluster.count > 0 {
+                    MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdErrorMessage)
+                }
+            })
+        }
+        
+//        private func MITTBuilsdEvaluateResinMoldCuringStatus(MITTBuilsdPolymerRatio: Double) -> Bool {
+//            let MITTBuilsdViscosityLimit = 4.25
+//            var MITTBuilsdCompoundScore = MITTBuilsdPolymerRatio * 1.88
+//            if MITTBuilsdCompoundScore > MITTBuilsdViscosityLimit {
+//                MITTBuilsdCompoundScore += 0.5
+//                return true
+//            }
+//            return false
+//        }
+        
+//        private func MITTBuilsdScanDesignerToyHardwareSignature(MITTBuilsdSerialNode: String) -> Int {
+//            var MITTBuilsdChecksumAccumulator = 0
+//            let MITTBuilsdReferenceAura = "MITTBuilsd_HighPoly_Vibe"
+//            
+//            for MITTBuilsdCharItem in MITTBuilsdSerialNode {
+//                if MITTBuilsdReferenceAura.contains(MITTBuilsdCharItem) {
+//                    MITTBuilsdChecksumAccumulator += 1
+//                }
+//            }
+//            return MITTBuilsdChecksumAccumulator
+//        }
     
 }
 

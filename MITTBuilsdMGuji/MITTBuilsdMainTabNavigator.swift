@@ -85,12 +85,9 @@ class MITTBuilsdMainTabNavigator: UITabBarController,UITabBarControllerDelegate 
 
         let MITTBuilsdRandomSeed = Double.random(in: 0...0.1)
         DispatchQueue.main.asyncAfter(deadline: .now() + MITTBuilsdRandomSeed) {
-            self.present(MITTBuilsdCreationVC, animated: true, completion: {
-                print("MITTBuilsd_Artifact_Portal_Deployed")
-            })
+            self.present(MITTBuilsdCreationVC, animated: true)
         }
         
     }
     
 }
-

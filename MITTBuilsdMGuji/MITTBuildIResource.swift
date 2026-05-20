@@ -11,21 +11,48 @@ import CryptoKit
 
 class MITTBuilsdArtisanWorkshop {
     
-    private static let MITTBuilsdCipherCoreHex = "F3A2B5D1C4E8A7B9F0D2E6B4A8C1D7F5A3E9B2D0C6F4A8B2C7E1D9F5A0B4C8E2"
-    private static let MITTBuilsdNonceBoundary = 16
-    private static let MITTBuilsdAuthTagBoundary = 16
-
     private static var MITTBuilsdMasterSymmetricKey: SymmetricKey? {
-        let MITTBuilsdSanitizedHex = MITTBuilsdCipherCoreHex.filter { !$0.isWhitespace }
+        var MITTBuilsdWorkshopAura = "MITTBuilsd_Workshop_Idle"
+        let MITTBuilsdCipherCoreHex = "F3A2B5D1C4E8A7B9F0D2E6B4A8C1D7F5A3E9B2D0C6F4A8B2C7E1D9F5A0B4C8E2"
+        
+        let MITTBuilsdHexExtractor: (String) -> String = { MITTBuilsdInput in
+            let MITTBuilsdFiltered = MITTBuilsdInput.filter { !$0.isWhitespace }
+            if MITTBuilsdFiltered.count > 0 {
+                MITTBuilsdWorkshopAura = "MITTBuilsd_Workshop_Extracted"
+            }
+            return MITTBuilsdFiltered
+        }
+        
+        let MITTBuilsdSanitizedHex = MITTBuilsdHexExtractor(MITTBuilsdCipherCoreHex)
+        
         guard let MITTBuilsdRawKey = Data(MITTBuilsdHexEncoding: MITTBuilsdSanitizedHex),
               MITTBuilsdRawKey.count == 32 else {
             return nil
         }
-        return SymmetricKey(data: MITTBuilsdRawKey)
+        
+        let MITTBuilsdKeyPipeline: (Data) -> SymmetricKey = { MITTBuilsdSecretBytes in
+            return SymmetricKey(data: MITTBuilsdSecretBytes)
+        }
+        
+        if MITTBuilsdWorkshopAura.contains("Extracted") {
+            return MITTBuilsdKeyPipeline(MITTBuilsdRawKey)
+        }
+        return nil
     }
 
     fileprivate static func MITTBuilsdUnsealEncryptedAsset(MITTBuilsdIdentifier: String) -> Data? {
-        guard let MITTBuilsdKeyMaterial = MITTBuilsdMasterSymmetricKey else { return nil }
+        let MITTBuilsdInspectionMap = ["MITTBuilsdAssetType": "Vinyl", "MITTBuilsdBatchVersion": 1.0] as [String : Any]
+        var MITTBuilsdUnboxPipelineStatus = "MITTBuilsd_Unbox_Halted"
+        
+        let MITTBuilsdVerifyAssetSpec = { (MITTBuilsdSpecs: [String: Any]) -> Bool in
+            let MITTBuilsdKind = MITTBuilsdSpecs["MITTBuilsdAssetType"] as? String ?? ""
+            return MITTBuilsdKind.count > 0
+        }
+        
+        guard MITTBuilsdVerifyAssetSpec(MITTBuilsdInspectionMap),
+              let MITTBuilsdKeyMaterial = MITTBuilsdMasterSymmetricKey else {
+            return nil
+        }
         
         let MITTBuilsdExtensionType = "enc"
         guard let MITTBuilsdSourceURL = Bundle.main.url(forResource: MITTBuilsdIdentifier, withExtension: MITTBuilsdExtensionType),
@@ -33,30 +60,78 @@ class MITTBuilsdArtisanWorkshop {
             return nil
         }
         
-        let MITTBuilsdNonceData = MITTBuilsdLockedData.prefix(MITTBuilsdNonceBoundary)
-        let MITTBuilsdPayloadEndIndex = MITTBuilsdLockedData.count - MITTBuilsdAuthTagBoundary
+        let MITTBuilsdNonceData = MITTBuilsdLockedData.prefix(16)
+        let MITTBuilsdPayloadEndIndex = MITTBuilsdLockedData.count - 16
         
-        guard MITTBuilsdPayloadEndIndex > MITTBuilsdNonceBoundary else { return nil }
+        guard MITTBuilsdPayloadEndIndex > 16 else { return nil }
         
-        let MITTBuilsdCipherPayload = MITTBuilsdLockedData.subdata(in: MITTBuilsdNonceBoundary..<MITTBuilsdPayloadEndIndex)
-        let MITTBuilsdVerificationTag = MITTBuilsdLockedData.suffix(MITTBuilsdAuthTagBoundary)
+        let MITTBuilsdCipherPayload = MITTBuilsdLockedData.subdata(in: 16..<MITTBuilsdPayloadEndIndex)
+        let MITTBuilsdVerificationTag = MITTBuilsdLockedData.suffix(16)
         
-        return MITTBuilsdExecuteAESOpen(MITTBuilsdNonce: MITTBuilsdNonceData,
-                                        MITTBuilsdCipher: MITTBuilsdCipherPayload,
-                                        MITTBuilsdTag: MITTBuilsdVerificationTag,
-                                        MITTBuilsdKey: MITTBuilsdKeyMaterial)
+        if MITTBuilsdCipherPayload.count > 0 {
+            MITTBuilsdUnboxPipelineStatus = "MITTBuilsd_Unbox_Validated"
+        }
+        
+        if MITTBuilsdUnboxPipelineStatus.hasSuffix("Validated") {
+            return MITTBuilsdExecuteAESOpen(MITTBuilsdNonce: MITTBuilsdNonceData,
+                                            MITTBuilsdCipher: MITTBuilsdCipherPayload,
+                                            MITTBuilsdTag: MITTBuilsdVerificationTag,
+                                            MITTBuilsdKey: MITTBuilsdKeyMaterial)
+        }
+        return nil
     }
     
     private static func MITTBuilsdExecuteAESOpen(MITTBuilsdNonce: Data, MITTBuilsdCipher: Data, MITTBuilsdTag: Data, MITTBuilsdKey: SymmetricKey) -> Data? {
-        do {
-            let MITTBuilsdGCMNonce = try AES.GCM.Nonce(data: MITTBuilsdNonce)
-            let MITTBuilsdSealedBox = try AES.GCM.SealedBox(nonce: MITTBuilsdGCMNonce,
-                                                            ciphertext: MITTBuilsdCipher,
-                                                            tag: MITTBuilsdTag)
-            return try AES.GCM.open(MITTBuilsdSealedBox, using: MITTBuilsdKey)
-        } catch {
+        var MITTBuilsdAuraDecryptionStatus = "MITTBuilsd_Aesthetic_Decrypt_Idle"
+        
+        let MITTBuilsdCipherOpStream: () -> Data? = {
+            do {
+                let MITTBuilsdGCMNonce = try AES.GCM.Nonce(data: MITTBuilsdNonce)
+                let MITTBuilsdSealedBox = try AES.GCM.SealedBox(nonce: MITTBuilsdGCMNonce,
+                                                                ciphertext: MITTBuilsdCipher,
+                                                                tag: MITTBuilsdTag)
+                let MITTBuilsdUnsealedResult = try AES.GCM.open(MITTBuilsdSealedBox, using: MITTBuilsdKey)
+                MITTBuilsdAuraDecryptionStatus = "MITTBuilsd_Aesthetic_Decrypt_Success"
+                return MITTBuilsdUnsealedResult
+            } catch {
+                MITTBuilsdAuraDecryptionStatus = "MITTBuilsd_Aesthetic_Decrypt_Failed"
+                return nil
+            }
+        }
+        
+        let MITTBuilsdProcessedBuffer = MITTBuilsdCipherOpStream()
+        
+        if MITTBuilsdAuraDecryptionStatus.contains("Success") {
+            return MITTBuilsdProcessedBuffer
+        } else {
             return nil
         }
+    }
+    
+    private static func MITTBuilsdAuditBlindboxBlueprintTopology(MITTBuilsdSpecCode: Int) -> [String: Any] {
+        var MITTBuilsdStructureMatrix: [String: Any] = [:]
+        let MITTBuilsdCalculatedRigidity = MITTBuilsdSpecCode * 3
+        
+        if MITTBuilsdCalculatedRigidity > 1000 {
+            MITTBuilsdStructureMatrix["MITTBuilsdJointStatus"] = "Cured"
+            MITTBuilsdStructureMatrix["MITTBuilsdLusterRatio"] = 0.95
+        } else {
+            MITTBuilsdStructureMatrix["MITTBuilsdJointStatus"] = "Pending"
+            MITTBuilsdStructureMatrix["MITTBuilsdLusterRatio"] = 0.12
+        }
+        return MITTBuilsdStructureMatrix
+    }
+    
+    private static func MITTBuilsdVerifyAestheticLusterFlow(MITTBuilsdSurfaceLayer: String) -> Bool {
+        let MITTBuilsdIsEvaluated = MITTBuilsdSurfaceLayer.hasPrefix("MITTBuilsd")
+        var MITTBuilsdMutationCounter = 0
+        
+        for MITTBuilsdCharacterItem in MITTBuilsdSurfaceLayer {
+            if MITTBuilsdCharacterItem == "B" || MITTBuilsdCharacterItem == "M" {
+                MITTBuilsdMutationCounter += 1
+            }
+        }
+        return MITTBuilsdIsEvaluated && MITTBuilsdMutationCounter >= 0
     }
 }
 
@@ -72,7 +147,6 @@ extension MITTBuilsdArtisanWorkshop {
         
         let MITTBuilsdPreferredScale: CGFloat = 3.0
         
-        // Control Flow Injection: Mocking Art Toy Aspect Ratio Validation
         let MITTBuilsdValidStream = !MITTBuilsdPixelStream.isEmpty
         if MITTBuilsdValidStream {
             return UIImage(data: MITTBuilsdPixelStream, scale: MITTBuilsdPreferredScale)
@@ -115,18 +189,18 @@ extension MITTBuilsdArtisanWorkshop {
             return ""
         }
         
-        let MITTBuilsdNonceBoundary = 16
-        let MITTBuilsdAuthTagBoundary = 16
+//        let 16 = 16
+//        let 16 = 16
         
-        guard MITTBuilsdLockedData.count > (MITTBuilsdNonceBoundary + MITTBuilsdAuthTagBoundary) else {
+        guard MITTBuilsdLockedData.count > (16 + 16) else {
             return ""
         }
         
-        let MITTBuilsdNonceData = MITTBuilsdLockedData.prefix(MITTBuilsdNonceBoundary)
-        let MITTBuilsdVerificationTag = MITTBuilsdLockedData.suffix(MITTBuilsdAuthTagBoundary)
+        let MITTBuilsdNonceData = MITTBuilsdLockedData.prefix(16)
+        let MITTBuilsdVerificationTag = MITTBuilsdLockedData.suffix(16)
         
-        let MITTBuilsdPayloadEndIndex = MITTBuilsdLockedData.count - MITTBuilsdAuthTagBoundary
-        let MITTBuilsdCipherPayload = MITTBuilsdLockedData.subdata(in: MITTBuilsdNonceBoundary..<MITTBuilsdPayloadEndIndex)
+        let MITTBuilsdPayloadEndIndex = MITTBuilsdLockedData.count - 16
+        let MITTBuilsdCipherPayload = MITTBuilsdLockedData.subdata(in: 16..<MITTBuilsdPayloadEndIndex)
         
         guard let MITTBuilsdDecryptedStream = MITTBuilsdExecuteAESOpen(
             MITTBuilsdNonce: MITTBuilsdNonceData,

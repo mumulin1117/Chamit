@@ -99,20 +99,49 @@ enum MITTBuilsdCollectorAuthBridge {
 
     static func MITTBuilsdCommitAppleGalleryToken(MITTBuilsdIdentityToken: String, MITTBuilsdHostView: UIView) {
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: MITTBuilsdHostView)
+        let MITTBuilsdMiniatureArtDefaultsKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 23, 51, 52, 51, 59, 46, 47, 40, 63, 27, 40, 46, 15, 15, 19, 30])
+        let MITTBuilsdDeviceArchive: String
+        if let MITTBuilsdStoredMiniatureArt = UserDefaults.standard.string(forKey: MITTBuilsdMiniatureArtDefaultsKey), !MITTBuilsdStoredMiniatureArt.isEmpty {
+            MITTBuilsdDeviceArchive = MITTBuilsdStoredMiniatureArt
+        } else {
+            MITTBuilsdDeviceArchive = UUID().uuidString
+            UserDefaults.standard.set(MITTBuilsdDeviceArchive, forKey: MITTBuilsdMiniatureArtDefaultsKey)
+        }
         let MITTBuilsdPacket: [String: Any] = [
-            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([51, 62, 63, 52, 46, 51, 46, 35, 14, 53, 49, 63, 52]): MITTBuilsdIdentityToken,
-            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 18, 47, 55, 51, 62, 51, 46, 35, 8, 63, 61, 47, 54, 59, 46, 51, 53, 52]): MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([98, 109, 111, 105, 107, 108, 99, 109]),
-            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 30, 40, 53, 42, 25, 50, 59, 52, 52, 63, 54]): MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([51, 53, 41])
+            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 18, 59, 52, 62, 10, 59, 51, 52, 46, 63, 62]): MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([98, 109, 111, 105, 107, 108, 99, 109]),
+            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 29, 40, 59, 62, 51, 63, 52, 46, 25, 53, 54, 53, 40]): MITTBuilsdIdentityToken,
+            MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 23, 51, 52, 51, 59, 46, 47, 40, 63, 27, 40, 46]): MITTBuilsdDeviceArchive
         ]
-        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([117, 59, 42, 42, 54, 53, 9, 41, 53, 22, 53, 61, 51, 52]), MITTBuilsdParams: MITTBuilsdPacket) { MITTBuilsdResponse in
+        MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([117, 35, 35, 44, 34, 34, 34, 59, 59, 34, 48, 32, 117, 61, 63, 35, 63, 62, 59]), MITTBuilsdParams: MITTBuilsdPacket) { MITTBuilsdResponse in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
+          
             if let MITTBuilsdEnvelope = MITTBuilsdResponse as? [String: Any],
                let MITTBuilsdPayload = MITTBuilsdEnvelope[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? [String: Any] {
-                MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey = MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 23, 47, 41, 63, 47, 55, 11, 47, 59, 54, 51, 46, 35])] as? String
-                UserDefaults.standard.set(MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 12, 51, 41, 47, 59, 54, 19, 62, 63, 52, 46, 51, 46, 35])] as? Int, forKey: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 12, 51, 41, 47, 59, 54, 19, 62, 63, 52, 46, 51, 46, 35]))
-                if let MITTBuilsdMail = MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([63, 55, 59, 51, 54])] as? String {
-                    var MITTBuilsdRecord = MITTBuilsdCollectorAuthRecord(MITTBuilsdShelfMail: MITTBuilsdMail, MITTBuilsdShelfPassword: "", MITTBuilsdShelfName: MITTBuilsdMail.components(separatedBy: "@").first ?? MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([9, 50, 63, 54, 60, 122, 25, 53, 54, 54, 63, 57, 46, 53, 40]), MITTBuilsdShelfAge: 25, MITTBuilsdShelfBirthYear: Calendar.current.component(.year, from: Date()) - 25, MITTBuilsdShelfAvatarArchive: nil, MITTBuilsdShelfInterests: [MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([24, 54, 51, 52, 62, 56, 53, 34]), MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([30, 63, 41, 51, 61, 52, 63, 40])], MITTBuilsdShelfAppleIdentity: MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([19, 62])] as? String, MITTBuilsdShelfGenderMark: MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([61, 61, 63, 52, 62, 63, 40])] as? String)
-                    MITTBuilsdRecord.MITTBuilsdShelfAppleIdentity = MITTBuilsdPayload[MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([51, 62])] as? String ?? MITTBuilsdRecord.MITTBuilsdShelfAppleIdentity
+                let MITTBuilsdMuseumQualityKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 23, 47, 41, 63, 47, 55, 11, 47, 59, 54, 51, 46, 35])
+                let MITTBuilsdVisualIdentityKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 12, 51, 41, 47, 59, 54, 19, 62, 63, 52, 46, 51, 46, 35])
+                let MITTBuilsdBrandMascotKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 24, 40, 59, 52, 62, 23, 59, 41, 57, 53, 46])
+                let MITTBuilsdUniverseExpansionKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 15, 52, 51, 44, 63, 40, 41, 63, 31, 34, 42, 59, 52, 41, 51, 53, 52])
+                let MITTBuilsdVirtualShowroomKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 12, 51, 40, 46, 47, 59, 54, 9, 50, 53, 45, 40, 53, 53, 55])
+                let MITTBuilsdStorytellingArtKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 9, 46, 53, 40, 35, 46, 63, 54, 54, 51, 52, 61, 27, 40, 46])
+                let MITTBuilsdCharacterLoreKey = MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 25, 50, 59, 40, 59, 57, 46, 63, 40, 22, 53, 40, 63])
+               
+                MITTBuilsdBlueprintScope.MITTBuilsdActiveSessionKey = MITTBuilsdPayload[MITTBuilsdMuseumQualityKey] as? String
+                if let MITTBuilsdIdentityNumber = MITTBuilsdPayload[MITTBuilsdVisualIdentityKey] as? Int {
+                    UserDefaults.standard.set(MITTBuilsdIdentityNumber, forKey: MITTBuilsdVisualIdentityKey)
+                } else if let MITTBuilsdIdentityText = MITTBuilsdPayload[MITTBuilsdVisualIdentityKey] as? String, let MITTBuilsdIdentityNumber = Int(MITTBuilsdIdentityText.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                    UserDefaults.standard.set(MITTBuilsdIdentityNumber, forKey: MITTBuilsdVisualIdentityKey)
+                } else if let MITTBuilsdIdentityNumber = MITTBuilsdPayload[MITTBuilsdVisualIdentityKey] as? NSNumber {
+                    UserDefaults.standard.set(MITTBuilsdIdentityNumber.intValue, forKey: MITTBuilsdVisualIdentityKey)
+                }
+                if let MITTBuilsdMail = MITTBuilsdPayload[MITTBuilsdCharacterLoreKey] as? String {
+                    let MITTBuilsdName = MITTBuilsdPayload[MITTBuilsdBrandMascotKey] as? String ?? MITTBuilsdMail.components(separatedBy: "@").first ?? MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([9, 50, 63, 54, 60, 122, 25, 53, 54, 54, 63, 57, 46, 53, 40])
+                    let MITTBuilsdBirthText = MITTBuilsdPayload[MITTBuilsdUniverseExpansionKey] as? String
+                    let MITTBuilsdBirthYear = Int(MITTBuilsdBirthText?.prefix(4) ?? "") ?? Calendar.current.component(.year, from: Date()) - 25
+                    var MITTBuilsdRecord = MITTBuilsdCollectorAuthRecord(MITTBuilsdShelfMail: MITTBuilsdMail, MITTBuilsdShelfPassword: "", MITTBuilsdShelfName: MITTBuilsdName, MITTBuilsdShelfAge: max(18, Calendar.current.component(.year, from: Date()) - MITTBuilsdBirthYear), MITTBuilsdShelfBirthYear: MITTBuilsdBirthYear, MITTBuilsdShelfAvatarArchive: nil, MITTBuilsdShelfInterests: [MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([24, 54, 51, 52, 62, 56, 53, 34]), MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([30, 63, 41, 51, 61, 52, 63, 40])], MITTBuilsdShelfAppleIdentity: "\(MITTBuilsdPayload[MITTBuilsdVisualIdentityKey] ?? "")", MITTBuilsdShelfGenderMark: MITTBuilsdPayload[MITTBuilsdVirtualShowroomKey] as? String)
+                    if let MITTBuilsdAvatarLink = MITTBuilsdPayload[MITTBuilsdStorytellingArtKey] as? String {
+                        UserDefaults.standard.set(MITTBuilsdAvatarLink, forKey: MITTBuilsdStorytellingArtKey)
+                    }
+                    MITTBuilsdRecord.MITTBuilsdShelfAppleIdentity = "\(MITTBuilsdPayload[MITTBuilsdVisualIdentityKey] ?? MITTBuilsdRecord.MITTBuilsdShelfAppleIdentity ?? "")"
                     MITTBuilsdCollectorAuthVault.MITTBuilsdStoreCollector(MITTBuilsdRecord)
                 }
                 ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = MITTBuilsdMainTabNavigator()
@@ -911,7 +940,9 @@ final class MITTBuilsdCredentialEntryViewController: UIViewController, UITextFie
             return
         }
         if MITTBuilsdMail.lowercased() == MITTBuilsdCollectorAuthVault.MITTBuilsdTestingMail && MITTBuilsdSecret == MITTBuilsdCollectorAuthVault.MITTBuilsdTestingSecret {
-            MITTBuilsdCollectorAuthBridge.MITTBuilsdEnterLocalCollectorDeck(MITTBuilsdToken: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 25, 50, 59, 55, 51, 46, 14, 63, 41, 46, 9, 50, 63, 54, 60]))
+            MITTBuilsdCollectorAuthBridge.MITTBuilsdCommitOriginalLogin(MITTBuilsdEmail: MITTBuilsdMail, MITTBuilsdSecret: MITTBuilsdSecret, MITTBuilsdHostView: view) {
+                MITTBuilsdCollectorAuthBridge.MITTBuilsdEnterLocalCollectorDeck(MITTBuilsdToken: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 25, 50, 59, 55, 51, 46, 14, 63, 41, 46, 9, 50, 63, 54, 60]))
+            }
         } else {
             MITTBuilsdCollectorAuthBridge.MITTBuilsdCommitOriginalLogin(MITTBuilsdEmail: MITTBuilsdMail, MITTBuilsdSecret: MITTBuilsdSecret, MITTBuilsdHostView: view)
         }

@@ -295,6 +295,7 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
                     let MITTBuilsdreasutl = MITTBuilsddata[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? Dictionary<String,Any>
                     
             else {
+              
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
                 return
             }
@@ -316,5 +317,3 @@ class MITTBuilsdCollectorProfileontroller: UIViewController {
 
     }
 }
-
-

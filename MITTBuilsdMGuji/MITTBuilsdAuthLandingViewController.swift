@@ -21,6 +21,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     private let MITTBuilsdEULADirectAccessLink = UIButton(type: .system)
     
     private var MITTBuilsdIsComplianceVerified: Bool = false
+    private var MITTBuilsdAppleAuthorizationController: ASAuthorizationController?
     private let MITTBuilsdActiveAccentColor = UIColor(red: 0.58, green: 0.44, blue: 0.95, alpha: 1.0)
     private let MITTBuilsdInactiveShadeColor = UIColor.white.withAlphaComponent(0.6)
 
@@ -158,6 +159,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     @objc private func MITTBuilsdUpdateComplianceState() {
         MITTBuilsdIsComplianceVerified.toggle()
         MITTBuilsdComplianceToggle.isSelected = MITTBuilsdIsComplianceVerified
+
     }
 
     @objc private func MITTBuilsdRouteToEULADisplay() {
@@ -188,6 +190,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
         let MITTBuilsdController = ASAuthorizationController(authorizationRequests: [MITTBuilsdRequest])
         MITTBuilsdController.delegate = self
         MITTBuilsdController.presentationContextProvider = self
+        MITTBuilsdAppleAuthorizationController = MITTBuilsdController
         MITTBuilsdController.performRequests()
     }
 
@@ -226,20 +229,26 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
 extension MITTBuilsdAuthLandingViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        view.window ?? ASPresentationAnchor()
+        return view.window ?? ASPresentationAnchor()
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+       
+        MITTBuilsdAppleAuthorizationController = nil
         guard let MITTBuilsdAppleCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
               let MITTBuilsdTokenData = MITTBuilsdAppleCredential.identityToken,
               let MITTBuilsdToken = String(data: MITTBuilsdTokenData, encoding: .utf8) else {
+           
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([59, 42, 42, 54, 63, 122, 59, 47, 46, 50, 122, 60, 59, 51, 54, 63, 62]))
             return
         }
+       
         MITTBuilsdCollectorAuthBridge.MITTBuilsdCommitAppleGalleryToken(MITTBuilsdIdentityToken: MITTBuilsdToken, MITTBuilsdHostView: view)
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        MITTBuilsdAppleAuthorizationController = nil
+       
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(error.localizedDescription)
     }
 }
