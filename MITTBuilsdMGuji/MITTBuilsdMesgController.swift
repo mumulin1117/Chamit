@@ -15,13 +15,13 @@ class MITTBuilsdMesgController: UIViewController {
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdChmesg") )
 
-    private lazy var MITTBuilsdheart: UIButton = {
-        let chdert = UIButton.init()
-        chdert.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdheardtbeat"), for: .normal)
-        chdert.addTarget(self, action: #selector(MITTBuilsdbeginmat), for: .touchUpInside)
-        chdert.translatesAutoresizingMaskIntoConstraints = false
-        return chdert
-    }()
+//    private lazy var MITTBuilsdheart: UIButton = {
+//        let chdert = UIButton.init()
+//        chdert.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdheardtbeat"), for: .normal)
+//        chdert.addTarget(self, action: #selector(MITTBuilsdbeginmat), for: .touchUpInside)
+//        chdert.translatesAutoresizingMaskIntoConstraints = false
+//        return chdert
+//    }()
     
     private lazy var MITTBuilsdMesgholderimg: UIImageView = {
         let quickImg = UIImageView.init(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "updatenodata"))
@@ -70,7 +70,7 @@ class MITTBuilsdMesgController: UIViewController {
         MITTBuilsdAvatarThumbnail.clipsToBounds = true
         MITTBuilsdAvatarThumbnail.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdAvatarThumbnail)
-        view.addSubview(MITTBuilsdheart)
+//        view.addSubview(MITTBuilsdheart)
         view.addSubview(MITTBuilsdMesgholderimg)
         MITTBuilsdMesgholderimg.isHidden = true
     }
@@ -104,19 +104,19 @@ class MITTBuilsdMesgController: UIViewController {
             MITTBuilsdAvatarThumbnail.widthAnchor.constraint(equalToConstant: 36),
             MITTBuilsdAvatarThumbnail.heightAnchor.constraint(equalToConstant: 36),
             
-            MITTBuilsdheart.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant: 20),
-            MITTBuilsdheart.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
-            MITTBuilsdheart.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
-            MITTBuilsdheart.heightAnchor.constraint(equalToConstant: 62),
+//            MITTBuilsdheart.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant: 20),
+//            MITTBuilsdheart.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
+//            MITTBuilsdheart.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+//            MITTBuilsdheart.heightAnchor.constraint(equalToConstant: 62),
+//           
            
-           
-            MITTBuilsdMainScrollCanvas.topAnchor.constraint(equalTo: MITTBuilsdheart.bottomAnchor, constant:16),
+            MITTBuilsdMainScrollCanvas.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant:20),
             MITTBuilsdMainScrollCanvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             MITTBuilsdMainScrollCanvas.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             MITTBuilsdMainScrollCanvas.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             MITTBuilsdMesgholderimg.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            MITTBuilsdMesgholderimg.topAnchor.constraint(equalTo: MITTBuilsdheart.bottomAnchor, constant: 100),
+            MITTBuilsdMesgholderimg.topAnchor.constraint(equalTo: MITTBuilsdBrandHeader.bottomAnchor, constant: 100),
         ])
     }
 

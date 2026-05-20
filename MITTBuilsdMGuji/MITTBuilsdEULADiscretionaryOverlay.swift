@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//ELUA
 
 class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
     var onButtonTap: ((Bool) -> Void)?

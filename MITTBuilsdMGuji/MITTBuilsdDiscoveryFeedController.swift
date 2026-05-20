@@ -20,13 +20,13 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         ["labelName":"Drops","MITTBuilsdBallJointedDoll":"E标签"],
         ["labelName":"Toyshot","MITTBuilsdBallJointedDoll":"F标签"],
     ]
-    // 2. 数据源持有
-        private var MITTBuilsdMasterDataSource: [String: [[String: Any]]] = [:] // 分类后的字典
-        private var MITTBuilsdCurrentDisplayList: [[String: Any]] = []        // 当前显示列表
+    
+        private var MITTBuilsdMasterDataSource: [String: [[String: Any]]] = [:]
+        private var MITTBuilsdCurrentDisplayList: [[String: Any]] = []
     
     
     private let MITTBuilsdHeroPageIndicator = UIPageControl()
-    private var MITTBuilsdHeroTotalCount: Int = 3 // 对应 Section 0 的 item 数量
+    private var MITTBuilsdHeroTotalCount: Int = 3
     
     private let MITTBuilsdHeroCanvasView = UIImageView(frame: UIScreen.main.bounds)
     private let MITTBuilsdBrandHeader = UIImageView(image: MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdChamit") )
@@ -44,15 +44,15 @@ class MITTBuilsdDiscoveryFeedController: UIViewController {
         MITTBuilsdHeroPageIndicator.currentPage = 0
         MITTBuilsdHeroPageIndicator.currentPageIndicatorTintColor = UIColor(red: 0.63, green: 0.47, blue: 0.94, alpha: 1.0)
         MITTBuilsdHeroPageIndicator.pageIndicatorTintColor = UIColor.systemGray5
-        MITTBuilsdHeroPageIndicator.isUserInteractionEnabled = false // 仅用于展示，由滚动触发
-        MITTBuilsdHeroPageIndicator.transform = CGAffineTransform(scaleX: 0.8, y: 0.8) // 缩小尺寸更显精致
+        MITTBuilsdHeroPageIndicator.isUserInteractionEnabled = false
+        MITTBuilsdHeroPageIndicator.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         MITTBuilsdHeroPageIndicator.translatesAutoresizingMaskIntoConstraints = false
         MITTBuilsdMainScrollCanvas.addSubview(MITTBuilsdHeroPageIndicator)
     }
     
     private func MITTBuilsdApplyIndicatorConstraints() {
         NSLayoutConstraint.activate([
-            MITTBuilsdHeroPageIndicator.topAnchor.constraint(equalTo: MITTBuilsdMainScrollCanvas.topAnchor, constant: 30), // 适配 Banner 高度 320
+            MITTBuilsdHeroPageIndicator.topAnchor.constraint(equalTo: MITTBuilsdMainScrollCanvas.topAnchor, constant: 30),
             MITTBuilsdHeroPageIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -266,7 +266,6 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
         }
     }
 
-    // 兴趣详情
     private func MITTBuilsdNavigateToDetail(at index: String) {
         let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdSparkHub.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: index))
         potritMITTBuilsd.hidesBottomBarWhenPushed = true
@@ -277,19 +276,15 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
 extension MITTBuilsdDiscoveryFeedController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 仅在主画布滚动时执行
+   
         guard scrollView == MITTBuilsdMainScrollCanvas else { return }
         
         let MITTBuilsdCanvasWidth = scrollView.frame.width
         guard MITTBuilsdCanvasWidth > 0 else { return }
         
-        // 计算当前 Section 0 的近似页码
-        // 因为 Section 0 设置了 orthogonalScrollingBehavior = .groupPagingCentered
-        // 我们需要通过内部的 layout 状态或偏移量来判定
         let MITTBuilsdCurrentX = scrollView.contentOffset.x
         let MITTBuilsdPageIndex = Int(round(MITTBuilsdCurrentX / MITTBuilsdCanvasWidth))
         
-        // 安全范围判定并更新
         if MITTBuilsdPageIndex >= 0 && MITTBuilsdPageIndex < MITTBuilsdHeroTotalCount {
             MITTBuilsdHeroPageIndicator.currentPage = MITTBuilsdPageIndex
         }
@@ -298,7 +293,7 @@ extension MITTBuilsdDiscoveryFeedController {
     private func MITTBuilsdCommitAuthRequest() {
       
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
-        //active
+        
         MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/iotpsecdgsvbyz/zrpucf", MITTBuilsdParams: ["MITTBuilsdWindUpToy":"87531697"]) {  andu in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
             
@@ -324,24 +319,17 @@ extension MITTBuilsdDiscoveryFeedController {
     
     private func MITTBuilsdCommitUserIndex() {
       
-      
-        ////sj/label/selectLabelPage
         MITTBuilsdSignalBroadcaster.MITTBuilsdDispatchNetworkTask(MITTBuilsdPath: "/zorwzeumzteuewgz/wyaaqm", MITTBuilsdParams: ["MITTBuilsdSewingDetail":"87531697"]) {  andu in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
-//            self.MITTBuilsdOrganizeData(from andu: [String: Any]?)
+
             guard let MITTBuilsddata = andu as? Dictionary<String,Any>
-//                 
-//                    let MITTBuilsdreasutl = MITTBuilsddata["data"] as? Array<Dictionary<String,Any>>
+
             else {
                 MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage()
                 return
             }
             self.MITTBuilsdOrganizeData(from: MITTBuilsddata)
-//            print(MITTBuilsdreasutl)
-//            
-//        
-//            self.MITTBuilsdMainScrollCanvas.reloadSections(IndexSet(integer: 1))
-            
+
         } MITTBuilsdFailureBlock: {  ertttt in
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
         }
@@ -352,10 +340,10 @@ extension MITTBuilsdDiscoveryFeedController {
         guard let MITTBuilsdResponse = andu,
               let MITTBuilsdRawList = MITTBuilsdResponse[MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"F1bzWVlQR23QNIizXBsRqkSTejejNaUGU5sU8xb1gtW7okva")] as? [[String: Any]] else { return }
         
-        // 清空旧数据
+       
         var MITTBuilsdTempMap: [String: [[String: Any]]] = [:]
         
-        // 遍历原始数据进行归类
+       
         for MITTBuilsdItem in MITTBuilsdRawList {
             if let MITTBuilsdCategoryKey = MITTBuilsdItem["MITTBuilsdBallJointedDoll"] as? String {
                 if MITTBuilsdTempMap[MITTBuilsdCategoryKey] == nil {
@@ -367,7 +355,7 @@ extension MITTBuilsdDiscoveryFeedController {
         
         self.MITTBuilsdMasterDataSource = MITTBuilsdTempMap
         self.MITTBuilsdMasterDataSource["All标签"] = MITTBuilsdRawList
-        // 默认显示第一个标签的内容
+        
         if let MITTBuilsdFirstCategory = MITTBuilsdAlltopic.first?["MITTBuilsdBallJointedDoll"] as? String {
             MITTBuilsdSwitchCategory(to: MITTBuilsdFirstCategory)
         }
@@ -379,7 +367,7 @@ extension MITTBuilsdDiscoveryFeedController {
         
     }
     private func MITTBuilsdSwitchCategory(to MITTBuilsdKey: String) {
-        // 更新当前显示列表（如果该分类没数据，则显示空数组）
+       
         self.MITTBuilsdCurrentDisplayList = self.MITTBuilsdMasterDataSource[MITTBuilsdKey] ?? []
         
         self.MITTBuilsdMainScrollCanvas.reloadSections(IndexSet.init(integer: 2))

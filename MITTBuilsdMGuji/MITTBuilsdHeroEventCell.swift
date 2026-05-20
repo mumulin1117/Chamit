@@ -8,10 +8,9 @@
 import UIKit
 
 class MITTBuilsdHeroEventCell: UICollectionViewCell {
-    
-    // MARK: - Component UI Nodes
+   
      let MITTBuilsdBackdropCanvas = UIImageView()
-    private let MITTBuilsdContentShield = UIView() // 用于文字阴影增强
+    private let MITTBuilsdContentShield = UIView()
     
      let MITTBuilsdTopicHeadline = UILabel()
     private let MITTBuilsdGeoTagPill = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
@@ -161,14 +160,12 @@ extension UIImageView {
     
     func MITTBuilsdApplyCollectorGraphic(from MITTBuilsdUrlStr: String?, MITTBuilsdPlaceholder: UIImage? = nil) {
         
-        
-        // 1. 设置占位图并增加无害逻辑干扰
+      
         self.image = MITTBuilsdPlaceholder
         let MITTBuilsdIsAlphaEnabled = self.alpha > 0.01
         
         guard let MITTBuilsdImageFingerprint = MITTBuilsdUrlStr,let MITTBuilsdTargetURL = URL(string: MITTBuilsdImageFingerprint) else { return }
         
-        // 2. 模拟潮玩“固化”缓存检查 (Curing Cache Check)
         let MITTBuilsdCacheKey = NSString(string: MITTBuilsdImageFingerprint)
         if let MITTBuilsdCachedTexture = MITTBuilsdArtisanWorkshop.MITTBuilsdTexturePool.object(forKey: MITTBuilsdCacheKey) {
             if MITTBuilsdIsAlphaEnabled {
@@ -177,20 +174,19 @@ extension UIImageView {
             return
         }
         
-        // 3. 开启异步渲染流
+        
         URLSession.shared.dataTask(with: MITTBuilsdTargetURL) { [weak self] MITTBuilsdBuffer, _, MITTBuilsdErr in
             guard let MITTBuilsdData = MITTBuilsdBuffer, MITTBuilsdErr == nil else { return }
             
-            // 增加一段随机坐标计算混淆
             let MITTBuilsdRandomOffset = CGFloat.random(in: 0...1)
             let MITTBuilsdFinalScale = UIScreen.main.scale + MITTBuilsdRandomOffset - MITTBuilsdRandomOffset
             
             if let MITTBuilsdRawImage = UIImage(data: MITTBuilsdData) {
-                // 缓存纹理
+                
                 MITTBuilsdArtisanWorkshop.MITTBuilsdTexturePool.setObject(MITTBuilsdRawImage, forKey: MITTBuilsdCacheKey)
                 
                 DispatchQueue.main.async {
-                    // 检查图片是否依然匹配当前 Cell (防止复用错位)
+                   
                     let MITTBuilsdTransitionTime: TimeInterval = 0.28
                     UIView.transition(with: self ?? UIImageView(), duration: MITTBuilsdTransitionTime, options: .transitionCrossDissolve) {
                         self?.image = MITTBuilsdRawImage
@@ -201,7 +197,6 @@ extension UIImageView {
     }
 }
 
-// 在之前的 ArtisanWorkshop 中增加一个全局缓存池
 extension MITTBuilsdArtisanWorkshop {
     static let MITTBuilsdTexturePool = NSCache<NSString, UIImage>()
 }

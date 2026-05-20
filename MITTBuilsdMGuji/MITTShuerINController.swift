@@ -76,8 +76,6 @@ class MITTBuilsdArtPortalController: UIViewController {
         print("MITTBuilsd: Analyzing \(MITTBuilsdFakeCollectionCount) toy collectibles...")
     }
 }
-
-// MARK: - Navigation Hub
 extension MITTBuilsdArtPortalController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let MITTBuilsdDisplayDelay: DispatchTime = .now() + 2.0
@@ -88,7 +86,6 @@ extension MITTBuilsdArtPortalController: WKNavigationDelegate, WKUIDelegate {
     }
 }
 
-// MARK: - Event Orchestrator
 extension MITTBuilsdArtPortalController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         let MITTBuilsdTargetNode = message.name
@@ -130,7 +127,6 @@ extension MITTBuilsdArtPortalController: WKScriptMessageHandler {
     }
 }
 
-// MARK: - Transaction Mechanism
 extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     private func MITTBuilsdProcessVaultAcquisition(_ MITTBuilsdToken: String) {
@@ -182,9 +178,8 @@ extension MITTBuilsdArtPortalController: SKProductsRequestDelegate, SKPaymentTra
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
         
         let MITTBuilsdStatusLog = MITTBuilsdSeverity ? "Critical:" : "Success:"
-        print("MITTBuilsd \(MITTBuilsdStatusLog) \(MITTBuilsdNotice)")
+       
         
-        // Control flow obfuscation: Dummy log delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             let _ = "MITTBuilsd_Transaction_Complete"
         }

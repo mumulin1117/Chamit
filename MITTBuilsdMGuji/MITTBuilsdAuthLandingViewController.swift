@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class MITTBuilsdAuthLandingViewController: UIViewController {
 
     private let MITTBuilsdHeroCanvasView = UIImageView()
     private let MITTBuilsdGlassOverlayView = UIView()
     private let MITTBuilsdEntryActionTrigger = UIButton(type: .system)
+    private let MITTBuilsdRegisterShelfTrigger = UIButton(type: .system)
+    private let MITTBuilsdAppleShelfTrigger = UIButton(type: .system)
     private let MITTBuilsdAgreementComplianceStack = UIStackView()
     private let MITTBuilsdComplianceToggle = UIButton(type: .custom)
     private let MITTBuilsdLegalRichTextAnchor = UITextView()
@@ -30,23 +33,50 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     private func MITTBuilsdInitializeCoreInterface() {
         view.backgroundColor = .black
         
-        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdLoginHero")
+        MITTBuilsdHeroCanvasView.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 22, 53, 61, 51, 52, 18, 63, 40, 53]))
         MITTBuilsdHeroCanvasView.contentMode = .scaleAspectFill
         MITTBuilsdHeroCanvasView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdHeroCanvasView)
 
-        MITTBuilsdEULADirectAccessLink.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdEULA"), for: .normal)
+        MITTBuilsdEULADirectAccessLink.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 31, 15, 22, 27])), for: .normal)
         MITTBuilsdEULADirectAccessLink.addTarget(self, action: #selector(MITTBuilsdRouteToEULADisplay), for: .touchUpInside)
         MITTBuilsdEULADirectAccessLink.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdEULADirectAccessLink)
-
-        MITTBuilsdEntryActionTrigger.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdlogbg"), for: .normal)
+        MITTBuilsdEntryActionTrigger.backgroundColor = UIColor(red: 0.71, green: 0.37, blue: 0.98, alpha: 1)
+        MITTBuilsdEntryActionTrigger.layer.cornerRadius = 15
+        MITTBuilsdEntryActionTrigger.layer.masksToBounds = true
+        MITTBuilsdEntryActionTrigger.setImage(UIImage.init(named: "SuiaEmaikgl")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        MITTBuilsdEntryActionTrigger.setBackgroundImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 54, 53, 61, 56, 61])), for: .normal)
+        MITTBuilsdEntryActionTrigger.setTitle("  " + MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([9, 51, 61, 52, 122, 51, 52]), for: .normal)
+        MITTBuilsdEntryActionTrigger.setTitleColor(.white, for: .normal)
+        MITTBuilsdEntryActionTrigger.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         MITTBuilsdEntryActionTrigger.addTarget(self, action: #selector(MITTBuilsdExecuteSessionIgnition), for: .touchUpInside)
         MITTBuilsdEntryActionTrigger.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(MITTBuilsdEntryActionTrigger)
 
-        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdunsel"), for: .normal)
-        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdun"), for: .selected)
+        MITTBuilsdRegisterShelfTrigger.setTitle(MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([14, 53, 122, 8, 63, 61, 51, 41, 46, 63, 40]), for: .normal)
+        MITTBuilsdRegisterShelfTrigger.setTitleColor(.white, for: .normal)
+        MITTBuilsdRegisterShelfTrigger.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
+        MITTBuilsdRegisterShelfTrigger.contentHorizontalAlignment = .right
+        MITTBuilsdRegisterShelfTrigger.addTarget(self, action: #selector(MITTBuilsdExecuteRegisterIgnition), for: .touchUpInside)
+        MITTBuilsdRegisterShelfTrigger.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(MITTBuilsdRegisterShelfTrigger)
+
+        MITTBuilsdAppleShelfTrigger.backgroundColor = UIColor(red: 0.39, green: 0.51, blue: 0.96, alpha: 0.88)
+        MITTBuilsdAppleShelfTrigger.layer.cornerRadius = 16
+        MITTBuilsdAppleShelfTrigger.layer.borderWidth = 1.0
+        MITTBuilsdAppleShelfTrigger.layer.borderColor = UIColor.white.cgColor
+        MITTBuilsdAppleShelfTrigger.setImage(UIImage(systemName: "apple.logo"), for: .normal)
+        MITTBuilsdAppleShelfTrigger.setTitle(MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([59, 42, 42, 54, 63, 122, 59, 57, 57, 53, 47, 52, 46, 122, 54, 53, 61, 51, 52]), for: .normal)
+        MITTBuilsdAppleShelfTrigger.tintColor = .white
+        MITTBuilsdAppleShelfTrigger.setTitleColor(.white, for: .normal)
+        MITTBuilsdAppleShelfTrigger.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        MITTBuilsdAppleShelfTrigger.addTarget(self, action: #selector(MITTBuilsdLaunchAppleShelfGate), for: .touchUpInside)
+        MITTBuilsdAppleShelfTrigger.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(MITTBuilsdAppleShelfTrigger)
+
+        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 47, 52, 41, 63, 54])), for: .normal)
+        MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 47, 52])), for: .selected)
         MITTBuilsdComplianceToggle.tintColor = .white
         MITTBuilsdComplianceToggle.addTarget(self, action: #selector(MITTBuilsdUpdateComplianceState), for: .touchUpInside)
         MITTBuilsdComplianceToggle.translatesAutoresizingMaskIntoConstraints = false
@@ -101,12 +131,22 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
             MITTBuilsdEULADirectAccessLink.widthAnchor.constraint(equalToConstant: 80),
             MITTBuilsdEULADirectAccessLink.heightAnchor.constraint(equalToConstant: 36),
 
-            MITTBuilsdEntryActionTrigger.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            MITTBuilsdEntryActionTrigger.bottomAnchor.constraint(equalTo: MITTBuilsdRegisterShelfTrigger.topAnchor, constant: -4),
             MITTBuilsdEntryActionTrigger.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             MITTBuilsdEntryActionTrigger.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             MITTBuilsdEntryActionTrigger.heightAnchor.constraint(equalToConstant: 54),
 
-            MITTBuilsdAgreementComplianceStack.topAnchor.constraint(equalTo: MITTBuilsdEntryActionTrigger.bottomAnchor, constant: 25),
+            MITTBuilsdRegisterShelfTrigger.bottomAnchor.constraint(equalTo: MITTBuilsdAppleShelfTrigger.topAnchor, constant: -6),
+            MITTBuilsdRegisterShelfTrigger.trailingAnchor.constraint(equalTo: MITTBuilsdEntryActionTrigger.trailingAnchor, constant: -6),
+            MITTBuilsdRegisterShelfTrigger.widthAnchor.constraint(greaterThanOrEqualToConstant: 112),
+            MITTBuilsdRegisterShelfTrigger.heightAnchor.constraint(equalToConstant: 28),
+
+            MITTBuilsdAppleShelfTrigger.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -112),
+            MITTBuilsdAppleShelfTrigger.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            MITTBuilsdAppleShelfTrigger.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            MITTBuilsdAppleShelfTrigger.heightAnchor.constraint(equalToConstant: 54),
+
+            MITTBuilsdAgreementComplianceStack.topAnchor.constraint(equalTo: MITTBuilsdAppleShelfTrigger.bottomAnchor, constant: 30),
             MITTBuilsdAgreementComplianceStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             MITTBuilsdAgreementComplianceStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
@@ -131,19 +171,32 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     }
 
     @objc private func MITTBuilsdExecuteSessionIgnition() {
+        guard MITTBuilsdVerifyComplianceBeforeRoute() else { return }
+        self.navigationController?.pushViewController(MITTBuilsdCredentialEntryViewController(MITTBuilsdEntryFlowMode: .signIn), animated: true)
+    }
+
+    @objc private func MITTBuilsdExecuteRegisterIgnition() {
+        guard MITTBuilsdVerifyComplianceBeforeRoute() else { return }
+        self.navigationController?.pushViewController(MITTBuilsdCredentialEntryViewController(MITTBuilsdEntryFlowMode: .register), animated: true)
+    }
+
+    @objc private func MITTBuilsdLaunchAppleShelfGate() {
+        guard MITTBuilsdVerifyComplianceBeforeRoute() else { return }
+        let MITTBuilsdProvider = ASAuthorizationAppleIDProvider()
+        let MITTBuilsdRequest = MITTBuilsdProvider.createRequest()
+        MITTBuilsdRequest.requestedScopes = [.email, .fullName]
+        let MITTBuilsdController = ASAuthorizationController(authorizationRequests: [MITTBuilsdRequest])
+        MITTBuilsdController.delegate = self
+        MITTBuilsdController.presentationContextProvider = self
+        MITTBuilsdController.performRequests()
+    }
+
+    private func MITTBuilsdVerifyComplianceBeforeRoute() -> Bool {
         guard MITTBuilsdIsComplianceVerified else {
             MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdArtisanWorkshop.MITTBuilsdRestoreSecretString(MITTBuilsdEncodedString:"NR3LSPxE1dyJrxv4tqQ98T7ZsOPp+cZJes9hZ4q0hxRMF0UUHt8Ctg0CtHnlSLUhF16KHVHe6TzkxeyMQpEQrNDVM6kPMoN8ZAMW+M2Z"))
-            
-            return
+            return false
         }
-        
-      
-        
-        
-      
-        
-        self.navigationController?.pushViewController(MITTBuilsdCredentialEntryViewController(), animated: true)
-        
+        return true
     }
 
     @objc private func MITTBuilsdHandleLegalAnchorTap(_ MITTBuilsdGesture: UITapGestureRecognizer) {
@@ -168,6 +221,26 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
                 self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
             }
         }
+    }
+}
+
+extension MITTBuilsdAuthLandingViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        view.window ?? ASPresentationAnchor()
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        guard let MITTBuilsdAppleCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let MITTBuilsdTokenData = MITTBuilsdAppleCredential.identityToken,
+              let MITTBuilsdToken = String(data: MITTBuilsdTokenData, encoding: .utf8) else {
+            MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([59, 42, 42, 54, 63, 122, 59, 47, 46, 50, 122, 60, 59, 51, 54, 63, 62]))
+            return
+        }
+        MITTBuilsdCollectorAuthBridge.MITTBuilsdCommitAppleGalleryToken(MITTBuilsdIdentityToken: MITTBuilsdToken, MITTBuilsdHostView: view)
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdAnnounceFailure(error.localizedDescription)
     }
 }
 extension UITextField {

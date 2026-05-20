@@ -20,55 +20,45 @@ class MITTBuilsdProgressPortal {
     
     private init() {}
 
-    // MARK: - Core Interface
-    
-    /// 显示纯加载旋转器
+  
     func MITTBuilsdEngage(on MITTBuilsdHost: UIView? = nil) {
         MITTBuilsdDeployPortal(on: MITTBuilsdHost, MITTBuilsdMode: .MITTBuilsdLoading, MITTBuilsdText: nil)
     }
     
-    /// 显示成功提示 (带文字)
     func MITTBuilsdAnnounceSuccess(_ MITTBuilsdMsg: String, on MITTBuilsdHost: UIView? = nil) {
         MITTBuilsdDeployPortal(on: MITTBuilsdHost, MITTBuilsdMode: .MITTBuilsdSuccess, MITTBuilsdText: MITTBuilsdMsg)
         MITTBuilsdScheduleAutoDismiss(after: 2.0)
     }
     
-    /// 显示失败提示 (带文字)
     func MITTBuilsdAnnounceFailure(_ MITTBuilsdMsg: String, on MITTBuilsdHost: UIView? = nil) {
         MITTBuilsdDeployPortal(on: MITTBuilsdHost, MITTBuilsdMode: .MITTBuilsdError, MITTBuilsdText: MITTBuilsdMsg)
         MITTBuilsdScheduleAutoDismiss(after: 2.5)
     }
 
-    // MARK: - Internal Engine
-    
     private enum MITTBuilsdPortalMode {
         case MITTBuilsdLoading, MITTBuilsdSuccess, MITTBuilsdError
     }
 
     private func MITTBuilsdDeployPortal(on MITTBuilsdHost: UIView?, MITTBuilsdMode: MITTBuilsdPortalMode, MITTBuilsdText: String?) {
-        MITTBuilsdDismiss() // 清除旧的实例
+        MITTBuilsdDismiss()
         
         let MITTBuilsdWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         guard let MITTBuilsdTarget = MITTBuilsdHost ?? MITTBuilsdWindow else { return }
         
-        // 1. 全屏遮罩
         let MITTBuilsdShield = UIView(frame: MITTBuilsdTarget.bounds)
-        MITTBuilsdShield.backgroundColor = .clear // 提示文字时通常不需要全屏半透明
+        MITTBuilsdShield.backgroundColor = .clear
         
-        // 2. 毛玻璃容器
         let MITTBuilsdBox = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
         MITTBuilsdBox.layer.cornerRadius = 18
         MITTBuilsdBox.clipsToBounds = true
         MITTBuilsdBox.translatesAutoresizingMaskIntoConstraints = false
         
-        // 3. 内容堆栈
         let MITTBuilsdStack = UIStackView()
         MITTBuilsdStack.axis = .vertical
         MITTBuilsdStack.spacing = 12
         MITTBuilsdStack.alignment = .center
         MITTBuilsdStack.translatesAutoresizingMaskIntoConstraints = false
         
-        // 4. 根据模式添加图标或旋转器
         switch MITTBuilsdMode {
         case .MITTBuilsdLoading:
             let MITTBuilsdSpinner = UIActivityIndicatorView(style: .large)
@@ -87,7 +77,6 @@ class MITTBuilsdProgressPortal {
             MITTBuilsdStack.addArrangedSubview(MITTBuilsdIcon)
         }
         
-        // 5. 文字标签
         if let MITTBuilsdString = MITTBuilsdText {
             let MITTBuilsdLabel = UILabel()
             MITTBuilsdLabel.text = MITTBuilsdString
@@ -98,7 +87,6 @@ class MITTBuilsdProgressPortal {
             MITTBuilsdStack.addArrangedSubview(MITTBuilsdLabel)
         }
         
-        // 布局挂载
         MITTBuilsdBox.contentView.addSubview(MITTBuilsdStack)
         MITTBuilsdShield.addSubview(MITTBuilsdBox)
         MITTBuilsdTarget.addSubview(MITTBuilsdShield)
@@ -141,14 +129,14 @@ class MITTBuilsdProgressPortal {
     
     private func MITTBuilsdScheduleAutoDismiss(after MITTBuilsdSeconds: TimeInterval) {
         let MITTBuilsdToken = UUID()
-        // 此处可以加入简单的令牌检查，防止多个弹窗冲突
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + MITTBuilsdSeconds) {
             self.MITTBuilsdDismiss()
         }
     }
 }
 
-// MARK: - UIViewController Convenience Extension
+
 
 extension UIViewController {
     
@@ -168,7 +156,6 @@ extension UIViewController {
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdDismiss()
     }
 }
-// MARK: - 快捷调用混淆扩展
 extension UIViewController {
     func MITTBuilsdShowLoading() {
         MITTBuilsdProgressPortal.MITTBuilsdShared.MITTBuilsdEngage(on: self.view)
