@@ -35,13 +35,31 @@ class MITTBuilsdEULADiscretionaryOverlay: UIViewController {
     - Misrepresentation: Impersonate any designer, brand, or other user, or falsely claim ownership of rare collectibles or "Grails" you do not possess.
     - Commercial Exploitation: Use Chamit’s "Shelf" or "Activity Rooms" for unauthorized commercial sales or auctioning of toys without our express written consent.
     - Harmful Content: Post "Sculpt Notes" or short videos containing hate speech, nudity, or graphic violence that disrupts the creative spirit of the community.
+    - Objectionable Content: Post, share, request, promote, or tolerate abusive, harassing, threatening, discriminatory, sexually explicit, exploitative, spam, scam, or otherwise objectionable content.
+    - Abusive Conduct: Harass, bully, stalk, threaten, intimidate, exploit, or repeatedly contact users who do not want to interact with you.
     - Scraping: Use automated systems to scrape community data, drop dates, or user collection details.
+
+    No Tolerance for Objectionable Content or Abusive Users
+    Chamit has zero tolerance for objectionable content and abusive users. Accounts that publish harmful content, coordinate abuse, evade moderation, or target other collectors may be restricted, suspended, or permanently removed.
+
+    Content Filtering and Moderation
+    Chamit may filter, hide, limit, review, or remove content that appears to be objectionable, abusive, spam-like, deceptive, or unsafe. Automated and manual review may be used to reduce harmful content in feeds, chats, profiles, comments, and media.
+
+    Reporting Objectionable Content
+    Users can report objectionable content or abusive behavior from available report entry points in the app, including feed, profile, chat, or content detail areas where available. Reports notify Chamit for review. We review reports of objectionable content within 24 hours and, when a violation is confirmed, remove the related content and eject or restrict the user who provided the offending content.
+
+    Blocking Abusive Users
+    Users can block abusive users from available block or safety actions in the app. Blocking removes the blocked user’s content from your feed or interaction surface instantly where technically possible, prevents further unwanted interaction, and notifies Chamit so the related behavior and content can be reviewed.
+
+    User Safety Responsibilities
+    If you see unsafe, abusive, or objectionable content, do not engage with it. Use the report or block tools so Chamit can act quickly and keep the collector community safe.
 
     Termination of License
     Chamit reserves the right, in its sole discretion, to terminate your license and access to the service immediately and without prior notice if:
     1. You violate any conduct restrictions outlined above.
     2. Your behavior is deemed "dating-centric" (harassment or unwanted romantic solicitation) rather than "interest-centric."
     3. You engage in the distribution of counterfeit or "bootleg" designer toys.
+    4. You provide objectionable content, abuse other users, or attempt to evade reporting, blocking, filtering, or moderation systems.
 
     Upon termination, you must cease all use of the application and delete all copies from your devices.
     """

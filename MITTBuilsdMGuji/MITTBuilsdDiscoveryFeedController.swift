@@ -207,6 +207,9 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
             miitBuildCell.MITTBuilsdChronosLabel.text = acc["MITTBuilsdTelescopicPart"] as? String
             
             miitBuildCell.actiImg.MITTBuilsdApplyCollectorGraphic(from: acc["MITTBuilsdEmbossedLogo"] as? String)
+            miitBuildCell.MITTBuilsdSafetyFlagTrigger.tag = indexPath.row
+            miitBuildCell.MITTBuilsdSafetyFlagTrigger.removeTarget(nil, action: nil, for: .touchUpInside)
+            miitBuildCell.MITTBuilsdSafetyFlagTrigger.addTarget(self, action: #selector(MITTBuilsdReportHeroDisplay(_:)), for: .touchUpInside)
             return   miitBuildCell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Tag", for: indexPath) as! MITTBuilsdInterestTagCell
@@ -219,6 +222,9 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
             
             miitBuildCell.MITTBuilsdPreviewSurface.MITTBuilsdApplyCollectorGraphic(from: acc["MITTBuilsdFashionDoll"] as? String)
             miitBuildCell.MITTBuilsdFavoriteNode.tintColor = (acc["MITTBuilsdBodyBlushing"] as? Int == 1) ? .orange : UIColor.lightGray
+            miitBuildCell.MITTBuilsdContentFlagTrigger.tag = indexPath.row
+            miitBuildCell.MITTBuilsdContentFlagTrigger.removeTarget(nil, action: nil, for: .touchUpInside)
+            miitBuildCell.MITTBuilsdContentFlagTrigger.addTarget(self, action: #selector(MITTBuilsdReportShowcaseDisplay(_:)), for: .touchUpInside)
             
             
             return miitBuildCell
@@ -260,6 +266,28 @@ extension MITTBuilsdDiscoveryFeedController: UICollectionViewDataSource, UIColle
 
     private func MITTBuilsdNavigateToDetail(at index: String) {
         let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdSparkHub.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: index))
+        potritMITTBuilsd.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
+    }
+    
+    @objc private func MITTBuilsdReportHeroDisplay(_ MITTBuilsdSender: UIButton) {
+        let MITTBuilsdIndex = MITTBuilsdSender.tag
+        guard MITTBuilsdTopActivys.indices.contains(MITTBuilsdIndex) else { return }
+        let MITTBuilsdDisplayNode = MITTBuilsdTopActivys[MITTBuilsdIndex]
+        let MITTBuilsdDisplayId = MITTBuilsdDisplayNode["MITTBuilsdBallJoint"] as? Int
+        MITTBuilsdRouteSafetyReport(MITTBuilsdArtifactId: MITTBuilsdDisplayId.map { "\($0)" } ?? "")
+    }
+    
+    @objc private func MITTBuilsdReportShowcaseDisplay(_ MITTBuilsdSender: UIButton) {
+        let MITTBuilsdIndex = MITTBuilsdSender.tag
+        guard MITTBuilsdCurrentDisplayList.indices.contains(MITTBuilsdIndex) else { return }
+        let MITTBuilsdDisplayNode = MITTBuilsdCurrentDisplayList[MITTBuilsdIndex]
+        let MITTBuilsdDisplayId = MITTBuilsdDisplayNode["MITTBuilsdOutfitAccessory"] as? Int
+        MITTBuilsdRouteSafetyReport(MITTBuilsdArtifactId: MITTBuilsdDisplayId.map { "\($0)" } ?? "")
+    }
+    
+    private func MITTBuilsdRouteSafetyReport(MITTBuilsdArtifactId: String) {
+        let potritMITTBuilsd = MITTBuilsdArtPortalController.init(MITTBuilsdEntrySource: MITTBuilsdBlueprintScope.MITTBuilsdReportEntry.MITTBuilsdGenerateRemoteEndpoint(MITTBuilsdExtraParam: MITTBuilsdArtifactId))
         potritMITTBuilsd.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(potritMITTBuilsd, animated: true)
     }

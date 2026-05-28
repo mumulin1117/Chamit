@@ -13,6 +13,7 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
     private let MITTBuilsdContentShield = UIView()
     
      let MITTBuilsdTopicHeadline = UILabel()
+    let MITTBuilsdSafetyFlagTrigger = UIButton(type: .system)
     private let MITTBuilsdGeoTagPill = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
      let MITTBuilsdGeoLabel = UILabel()
     
@@ -43,6 +44,13 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
         MITTBuilsdBackdropCanvas.image = MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: "MITTBuilsdHeroSample") // 替换为你的图5素材
         MITTBuilsdBackdropCanvas.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(MITTBuilsdBackdropCanvas)
+        
+        MITTBuilsdSafetyFlagTrigger.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        MITTBuilsdSafetyFlagTrigger.tintColor = .white
+        MITTBuilsdSafetyFlagTrigger.backgroundColor = UIColor.black.withAlphaComponent(0.35)
+        MITTBuilsdSafetyFlagTrigger.layer.cornerRadius = 16
+        MITTBuilsdSafetyFlagTrigger.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(MITTBuilsdSafetyFlagTrigger)
         
         // 2. Headline
 //        MITTBuilsdTopicHeadline.text = "Find wake surf ride partners"
@@ -127,6 +135,11 @@ class MITTBuilsdHeroEventCell: UICollectionViewCell {
             MITTBuilsdBackdropCanvas.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             MITTBuilsdBackdropCanvas.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             MITTBuilsdBackdropCanvas.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            MITTBuilsdSafetyFlagTrigger.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            MITTBuilsdSafetyFlagTrigger.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
+            MITTBuilsdSafetyFlagTrigger.widthAnchor.constraint(equalToConstant: 32),
+            MITTBuilsdSafetyFlagTrigger.heightAnchor.constraint(equalToConstant: 32),
             
             // Bottom-up Layout
             MITTBuilsdEnlistActionTrigger.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),

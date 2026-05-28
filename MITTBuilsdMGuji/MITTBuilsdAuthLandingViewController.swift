@@ -21,14 +21,22 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
     private let MITTBuilsdEULADirectAccessLink = UIButton(type: .system)
     
     private var MITTBuilsdIsComplianceVerified: Bool = false
+    private var MITTBuilsdDidPresentEULAGate = false
     private var MITTBuilsdAppleAuthorizationController: ASAuthorizationController?
     private let MITTBuilsdActiveAccentColor = UIColor(red: 0.58, green: 0.44, blue: 0.95, alpha: 1.0)
     private let MITTBuilsdInactiveShadeColor = UIColor.white.withAlphaComponent(0.6)
+    private let MITTBuilsdEULAAgreementVaultKey = "MITTBuilsdEULAAgreementAccepted"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        MITTBuilsdRestoreComplianceState()
         MITTBuilsdInitializeCoreInterface()
         MITTBuilsdApplySculptedLayoutConstraints()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        MITTBuilsdPresentEULAGateIfNeeded()
     }
 
     private func MITTBuilsdInitializeCoreInterface() {
@@ -78,6 +86,7 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
         MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 47, 52, 41, 63, 54])), for: .normal)
         MITTBuilsdComplianceToggle.setImage(MITTBuilsdArtisanWorkshop.MITTBuilsdFetchVibeGraphic(MITTBuilsdAssetAlias: MITTBuilsdCollectorObscura.MITTBuilsdRevealShelfCopy([23, 19, 14, 14, 24, 47, 51, 54, 41, 62, 47, 52])), for: .selected)
+        MITTBuilsdComplianceToggle.isSelected = MITTBuilsdIsComplianceVerified
         MITTBuilsdComplianceToggle.tintColor = .white
         MITTBuilsdComplianceToggle.addTarget(self, action: #selector(MITTBuilsdUpdateComplianceState), for: .touchUpInside)
         MITTBuilsdComplianceToggle.translatesAutoresizingMaskIntoConstraints = false
@@ -158,18 +167,36 @@ class MITTBuilsdAuthLandingViewController: UIViewController {
 
     @objc private func MITTBuilsdUpdateComplianceState() {
         MITTBuilsdIsComplianceVerified.toggle()
-        MITTBuilsdComplianceToggle.isSelected = MITTBuilsdIsComplianceVerified
-
+        MITTBuilsdCommitComplianceState(MITTBuilsdIsComplianceVerified)
     }
 
     @objc private func MITTBuilsdRouteToEULADisplay() {
+        MITTBuilsdPresentEULAGate(animated: true)
+    }
+
+    private func MITTBuilsdRestoreComplianceState() {
+        MITTBuilsdIsComplianceVerified = UserDefaults.standard.bool(forKey: MITTBuilsdEULAAgreementVaultKey)
+    }
+
+    private func MITTBuilsdCommitComplianceState(_ MITTBuilsdAccepted: Bool) {
+        MITTBuilsdIsComplianceVerified = MITTBuilsdAccepted
+        MITTBuilsdComplianceToggle.isSelected = MITTBuilsdAccepted
+        UserDefaults.standard.set(MITTBuilsdAccepted, forKey: MITTBuilsdEULAAgreementVaultKey)
+    }
+
+    private func MITTBuilsdPresentEULAGateIfNeeded() {
+        guard !MITTBuilsdIsComplianceVerified, !MITTBuilsdDidPresentEULAGate, presentedViewController == nil else { return }
+        MITTBuilsdDidPresentEULAGate = true
+        MITTBuilsdPresentEULAGate(animated: true)
+    }
+
+    private func MITTBuilsdPresentEULAGate(animated MITTBuilsdAnimated: Bool) {
         let MITTBuilsdMockOverlay = MITTBuilsdEULADiscretionaryOverlay()
-        MITTBuilsdMockOverlay.onButtonTap = { tapresult in
-            self.MITTBuilsdIsComplianceVerified = tapresult
-            self.MITTBuilsdComplianceToggle.isSelected = tapresult
+        MITTBuilsdMockOverlay.onButtonTap = { [weak self] tapresult in
+            self?.MITTBuilsdCommitComplianceState(tapresult)
         }
         MITTBuilsdMockOverlay.title = "Chamit EULA"
-        present(UINavigationController(rootViewController: MITTBuilsdMockOverlay), animated: true)
+        present(UINavigationController(rootViewController: MITTBuilsdMockOverlay), animated: MITTBuilsdAnimated)
     }
 
     @objc private func MITTBuilsdExecuteSessionIgnition() {
